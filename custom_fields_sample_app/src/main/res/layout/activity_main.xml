@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".CustomFieldsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter information for custom fields below:"/>
+
+    <EditText
+        android:id="@+id/customInput1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Custom Field 1"
+        android:inputType="text"
+        />
+
+    <EditText
+        android:id="@+id/customInput2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Custom Field 2"
+        android:inputType="text"
+        />
+
+    <EditText
+        android:id="@+id/customInput3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Custom Field 3"
+        android:inputType="text"
+        />
+
+    <EditText
+        android:id="@+id/customInput4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Custom Field 4"
+        android:inputType="text"
+        />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        />
+</LinearLayout>
+
