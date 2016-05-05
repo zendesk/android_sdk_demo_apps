@@ -1,2 +1,7 @@
-# android_sdk_demo_apps
-This repository contains sample android code and applications which use our SDKs
+:warning: *Use of this software is subject to important terms and conditions as set forth in the License file* :warning:
+
+## Zendesk Sample Apps for Android
+
+This repository provides you with sample Apps to help learn how to use the Zendesk Apps framework and APIs.
+
+We hope you'll find those sample Apps useful and encourage you to re-use some of this code in your own Apps. If you have any questions please email support@zendesk.com. Please submit bug reports to [Zendesk](https://support.zendesk.com/requests/new). Pull requests are welcome.
