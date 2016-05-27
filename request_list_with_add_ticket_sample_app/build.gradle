@@ -5,7 +5,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.zendesk.sample.customfields"
+        applicationId "com.zendesk.sample.requestlist"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -17,10 +17,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    lintOptions {
-        abortOnError false
-    }
 }
 
 repositories {
@@ -28,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'com.android.support', name:'appcompat-v7', version: rootProject.ext.appCompatVersion
+    compile group: 'com.android.support', name: 'appcompat-v7', version: rootProject.ext.appCompatVersion
 
-    compile group: 'com.zendesk', name: 'sdk-providers', version: rootProject.ext.zendeskSdkVersion
+    compile group: 'com.zendesk', name: 'sdk', version: rootProject.ext.zendeskSdkVersion
 }
