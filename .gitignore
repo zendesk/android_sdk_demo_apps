@@ -33,3 +33,4 @@ captures/
 
 # Android Studio IDEA folder
 .idea
+*.iml
