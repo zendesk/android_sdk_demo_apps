@@ -15,6 +15,11 @@ import com.zopim.sample.chatapi.R;
 
 import java.util.Locale;
 
+/**
+ * Class used to display a {@link VisitorAttachment} as an item in a {@link RecyclerView}.
+ * <p>
+ * Responsible for binding values to inflated views and to determine if the item needs to be updated.
+ */
 class VisitorAttachmentWrapper extends ViewHolderWrapper<VisitorAttachment> {
 
     private final int progress;

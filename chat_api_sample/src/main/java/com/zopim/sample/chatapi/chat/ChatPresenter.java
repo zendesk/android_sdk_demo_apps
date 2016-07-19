@@ -10,6 +10,9 @@ import com.zopim.android.sdk.model.items.RowItem;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Bridge code between {@link ChatPresenter} and {@link ChatView}.
+ */
 class ChatPresenter implements ChatMvp.Presenter {
 
     private final ChatMvp.Model model;

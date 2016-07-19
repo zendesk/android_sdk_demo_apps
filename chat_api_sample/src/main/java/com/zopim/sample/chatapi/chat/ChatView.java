@@ -27,6 +27,10 @@ import com.zopim.sample.chatapi.databinding.ActivityChatBinding;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * View class that's responsible for interacting and creating the views needed
+ * to display the chat.
+ */
 class ChatView implements ChatMvp.View {
 
     private ChatMvp.Presenter presenter;

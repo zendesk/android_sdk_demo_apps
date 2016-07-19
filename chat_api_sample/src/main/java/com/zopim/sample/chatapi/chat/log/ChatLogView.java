@@ -10,6 +10,9 @@ import com.zopim.sample.chatapi.chat.log.items.ItemType;
 
 import java.util.List;
 
+/**
+ * {@link RecyclerView.Adapter} used to render the chat log.
+ */
 public class ChatLogView extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         implements ChatLogMvp.View {
 

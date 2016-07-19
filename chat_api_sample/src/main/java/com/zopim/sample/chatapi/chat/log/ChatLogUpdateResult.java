@@ -2,7 +2,11 @@ package com.zopim.sample.chatapi.chat.log;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
+/**
+ * Data class for representing result when calling {@link ChatLogModel#updateChatLog(Map)}.
+ */
 class ChatLogUpdateResult {
 
     static ChatLogUpdateResult create(List<Integer> updatedIndex, final List<Integer> insertedIndex) {

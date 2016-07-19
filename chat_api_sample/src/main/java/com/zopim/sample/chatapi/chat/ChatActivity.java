@@ -1,5 +1,6 @@
 package com.zopim.sample.chatapi.chat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -16,7 +17,9 @@ import com.zopim.sample.chatapi.databinding.ActivityChatBinding;
 
 import java.util.List;
 
-
+/**
+ * {@link Activity} that hosts a chat.
+ */
 public class ChatActivity extends AppCompatActivity {
 
     private ChatMvp.Presenter presenter;

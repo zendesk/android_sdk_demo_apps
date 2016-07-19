@@ -14,6 +14,9 @@ import java.util.List;
 
 import static com.zopim.android.sdk.model.items.RowItem.Type;
 
+/**
+ * Factory for creating {@link ViewHolderWrapper} out of {@link RowItem}.
+ */
 public class ItemFactory {
 
     private static final List<RowItem.Type> USED_MESSAGES = Arrays.asList(

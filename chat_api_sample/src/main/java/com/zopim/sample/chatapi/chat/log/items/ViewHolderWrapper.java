@@ -4,6 +4,11 @@ import android.support.v7.widget.RecyclerView;
 
 import com.zopim.android.sdk.model.items.RowItem;
 
+/**
+ * Super class every item in the {@link RecyclerView} inherits from.
+ *
+ * @param <E> specific type of the {@link RowItem} this class should hold.
+ */
 public abstract class ViewHolderWrapper<E extends RowItem> {
 
     private final ItemType itemType;

@@ -7,6 +7,9 @@ import com.zopim.sample.chatapi.chat.log.items.ViewHolderWrapper;
 
 import java.util.Map;
 
+/**
+ * Presenter class used as a bridge between {@link ChatLogModel} and {@link ChatLogView}.
+ */
 public class ChatLogPresenter implements ChatLogMvp.Presenter {
 
     private final ChatLogMvp.View view;

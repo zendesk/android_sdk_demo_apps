@@ -1,6 +1,8 @@
 package com.zopim.sample.chatapi.chat.log;
 
 
+import android.support.v7.widget.RecyclerView;
+
 import com.zopim.android.sdk.data.DataSource;
 import com.zopim.android.sdk.model.items.RowItem;
 import com.zopim.sample.chatapi.chat.log.items.ItemFactory;
@@ -10,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Model class for representing, updating and holding the internal state of the {@link RecyclerView}.
+ */
 public class ChatLogModel implements ChatLogMvp.Model {
 
     private final List<ViewHolderWrapper> listItems;

@@ -1,7 +1,18 @@
 package com.zopim.sample.chatapi.chat.log.items;
 
+import android.support.v7.widget.RecyclerView;
+
 import com.zopim.sample.chatapi.R;
 
+/**
+ * Enum for representing each specific item in the {@link RecyclerView}.
+ * Providing the following information:
+ * <ol>
+ *  <li>Item type</li>
+ *  <li>Layout Id</li>
+ *  <li>agent: {@code true}/{@code false}</li>
+ * </ol>
+ */
 public enum ItemType {
 
     AGENT_MESSAGE(1, R.layout.chat_log_agent_message, true),

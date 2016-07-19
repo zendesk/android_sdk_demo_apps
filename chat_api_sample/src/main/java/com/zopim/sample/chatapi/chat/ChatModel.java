@@ -19,6 +19,9 @@ import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.TreeMap;
 
+/**
+ * 
+ */
 class ChatModel implements ChatMvp.Model {
 
     private final DataSource dataSource;
