@@ -10,7 +10,7 @@ public interface ChatLogMvp {
 
     interface Presenter {
 
-        void updateChatLog(Map<String, RowItem> chatLogMap);
+        void updateChatLog(Map<String, RowItem> chatItemMap);
 
         int getItemCount();
 
@@ -36,7 +36,7 @@ public interface ChatLogMvp {
 
         int getItemCount();
 
-        ChatLogUpdateResult updateChatLog(Map<String, RowItem> chatLogMap);
+        ChatLogUpdateResult updateChatLog(Map<String, RowItem> chatItemMap);
     }
 
 }

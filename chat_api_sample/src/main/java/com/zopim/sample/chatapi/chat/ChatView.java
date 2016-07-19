@@ -9,12 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.zendesk.belvedere.BelvedereIntent;
 import com.zendesk.belvedere.BelvedereSource;
 import com.zendesk.util.StringUtils;
 import com.zopim.android.sdk.api.ZopimChatApi;
-import com.zopim.android.sdk.model.ChatLog;
 import com.zopim.android.sdk.model.items.RowItem;
 import com.zopim.android.sdk.util.BelvedereProvider;
 import com.zopim.sample.chatapi.R;
@@ -43,14 +43,12 @@ class ChatView implements ChatMvp.View {
         this.views = views;
         this.context = context;
 
-        this.connectionSnackbar = Snackbar.make(views.chatRootContainer, "No Connection", Snackbar.LENGTH_INDEFINITE);
-        this.connectionSnackbar.getView().setBackgroundColor(ContextCompat.getColor(context, R.color.color_snackbar_connection));
-        this.timeoutSnackbar = Snackbar.make(views.chatRootContainer, "Timeout", Snackbar.LENGTH_INDEFINITE);
-        this.timeoutSnackbar.getView().setBackgroundColor(ContextCompat.getColor(context, R.color.color_snackbar_connection));
+        this.connectionSnackbar = createSnackback(views.chatRootContainer, R.string.snackbar_connection);
+        this.timeoutSnackbar = createSnackback(views.chatRootContainer, R.string.snackbar_timeout);
     }
 
     @Override
-    public void initChatLog(final FragmentActivity activity) {
+    public void initChatUi(final FragmentActivity activity) {
         initChatLogRecycler();
         initChatSendButton();
         initChatInput();
@@ -63,8 +61,8 @@ class ChatView implements ChatMvp.View {
     }
 
     @Override
-    public void updateChatLog(final Map<String, RowItem> chatLogMap) {
-        chatLogPresenter.updateChatLog(chatLogMap);
+    public void updateChatLog(final Map<String, RowItem> chatItemMap) {
+        chatLogPresenter.updateChatLog(chatItemMap);
     }
 
     @Override
@@ -190,5 +188,12 @@ class ChatView implements ChatMvp.View {
                 }
             }
         });
+    }
+
+    private Snackbar createSnackback(ViewGroup container, int titleId) {
+        final String title = container.getContext().getString(titleId);
+        final Snackbar snackbar = Snackbar.make(views.chatRootContainer, title, Snackbar.LENGTH_INDEFINITE);
+        snackbar.getView().setBackgroundColor(ContextCompat.getColor(context, R.color.color_snackbar_connection));
+        return snackbar;
     }
 }

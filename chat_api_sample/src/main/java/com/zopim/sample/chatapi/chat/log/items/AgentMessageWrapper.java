@@ -4,16 +4,16 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.zopim.android.sdk.model.Agent;
-import com.zopim.android.sdk.model.ChatLog;
+import com.zopim.android.sdk.model.items.AgentMessage;
 import com.zopim.android.sdk.model.items.RowItem;
 import com.zopim.sample.chatapi.R;
 
-class AgentMessageWrapper extends ViewHolderWrapper<com.zopim.android.sdk.model.items.AgentMessage> {
+class AgentMessageWrapper extends ViewHolderWrapper<AgentMessage> {
 
     private final Agent agent;
 
-    AgentMessageWrapper(final String messageId, final com.zopim.android.sdk.model.items.AgentMessage chatLog, final Agent agent) {
-        super(ItemType.AGENT_MESSAGE, messageId, chatLog);
+    AgentMessageWrapper(final String messageId, final AgentMessage rowItem, final Agent agent) {
+        super(ItemType.AGENT_MESSAGE, messageId, rowItem);
         this.agent = agent;
     }
 
@@ -27,7 +27,7 @@ class AgentMessageWrapper extends ViewHolderWrapper<com.zopim.android.sdk.model.
     }
 
     @Override
-    public boolean isUpdated(final RowItem chatLog) {
+    public boolean isUpdated(final RowItem rowItem) {
         return false;
     }
 }

@@ -13,17 +13,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import static com.zopim.android.sdk.model.items.RowItem.Type;
-import static com.zopim.android.sdk.model.items.RowItem.Type.AGENT_ATTACHMENT;
 
 public class ItemFactory {
 
     private static final List<RowItem.Type> USED_MESSAGES = Arrays.asList(
-            Type.AGENT_MESSAGE, AGENT_ATTACHMENT, Type.VISITOR_ATTACHMENT, Type.VISITOR_MESSAGE
+            Type.AGENT_MESSAGE, Type.AGENT_ATTACHMENT, Type.VISITOR_ATTACHMENT, Type.VISITOR_MESSAGE
     );
 
-    public static int countUsedMessages(Collection<RowItem> chatLogs) {
+    public static int countUsedMessages(Collection<RowItem> rowItems) {
         int count = 0;
-        for(RowItem rowItem: chatLogs) {
+        for(RowItem rowItem : rowItems) {
             if(USED_MESSAGES.contains(rowItem.getType())){
                 count++;
             }

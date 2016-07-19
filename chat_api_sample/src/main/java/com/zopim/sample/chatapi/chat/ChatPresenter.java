@@ -4,7 +4,6 @@ import android.support.v4.app.FragmentActivity;
 
 import com.zendesk.belvedere.BelvedereResult;
 import com.zendesk.util.CollectionUtils;
-import com.zopim.android.sdk.model.ChatLog;
 import com.zopim.android.sdk.model.Connection;
 import com.zopim.android.sdk.model.items.RowItem;
 
@@ -30,7 +29,7 @@ class ChatPresenter implements ChatMvp.Presenter {
         chatListener = new MyChatListener();
         model.registerChatListener(chatListener);
 
-        view.initChatLog(fragmentActivity);
+        view.initChatUi(fragmentActivity);
         view.setInputEnabled(false);
         view.showLoading(true);
     }
@@ -62,29 +61,27 @@ class ChatPresenter implements ChatMvp.Presenter {
     private class MyChatListener implements ChatMvp.Model.ChatListener {
 
         @Override
-        public void updateChatLog(final Map<String, RowItem> chatlog) {
-            view.updateChatLog(chatlog);
+        public void onUpdateChatLog(final Map<String, RowItem> chatItems) {
+            view.updateChatLog(chatItems);
         }
 
         @Override
-        public void updateConnection(final Connection connection) {
-            if (connection.getStatus() != null) {
-                switch (connection.getStatus()) {
-                    case NO_CONNECTION: {
-                        view.connectionChanged(false);
-                        break;
-                    }
-                    case CONNECTED: {
-                        view.connectionChanged(true);
-                        view.showLoading(false);
-                        break;
-                    }
+        public void onUpdateConnection(final Connection connection) {
+            switch (connection.getStatus()) {
+                case NO_CONNECTION: {
+                    view.connectionChanged(false);
+                    break;
+                }
+                case CONNECTED: {
+                    view.connectionChanged(true);
+                    view.showLoading(false);
+                    break;
                 }
             }
         }
 
         @Override
-        public void timeout() {
+        public void onTimeout() {
             view.timeout();
             model.unregisterChatListener();
         }

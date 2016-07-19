@@ -4,11 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.zopim.android.sdk.model.items.RowItem;
+import com.zopim.android.sdk.model.items.VisitorMessage;
 import com.zopim.sample.chatapi.R;
 
-class VisitorMessageWrapper extends ViewHolderWrapper<com.zopim.android.sdk.model.items.VisitorMessage> {
+class VisitorMessageWrapper extends ViewHolderWrapper<VisitorMessage> {
 
-    VisitorMessageWrapper(final String messageId, final com.zopim.android.sdk.model.items.VisitorMessage rowItem) {
+    VisitorMessageWrapper(final String messageId, final VisitorMessage rowItem) {
         super(ItemType.VISITOR_MESSAGE, messageId, rowItem);
     }
 

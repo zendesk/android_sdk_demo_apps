@@ -59,10 +59,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:background="#00000000"
+                android:background="@color/color_transparent"
                 android:ems="10"
                 android:gravity="top"
-                android:hint="Write a message"
+                android:hint="@string/chat_input_hint"
                 android:inputType="textMultiLine|textCapSentences"
                 android:lines="4"
                 android:minLines="1"
@@ -109,8 +109,6 @@
                     app:srcCompat="@drawable/ic_send_white_18dp"/>
 
             </RelativeLayout>
-
         </LinearLayout>
-
     </RelativeLayout>
 </layout>

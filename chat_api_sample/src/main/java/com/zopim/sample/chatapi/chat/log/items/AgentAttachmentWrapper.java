@@ -9,17 +9,17 @@ import android.widget.ImageView;
 import com.zendesk.belvedere.Belvedere;
 import com.zendesk.belvedere.BelvedereResult;
 import com.zopim.android.sdk.model.Agent;
-import com.zopim.android.sdk.model.ChatLog;
+import com.zopim.android.sdk.model.items.AgentAttachment;
 import com.zopim.android.sdk.model.items.RowItem;
 import com.zopim.android.sdk.util.BelvedereProvider;
 import com.zopim.sample.chatapi.R;
 
-class AgentAttachmentWrapper extends ViewHolderWrapper<com.zopim.android.sdk.model.items.AgentAttachment> {
+class AgentAttachmentWrapper extends ViewHolderWrapper<AgentAttachment> {
 
     private final Agent agent;
 
-    AgentAttachmentWrapper(final String messageId, final com.zopim.android.sdk.model.items.AgentAttachment chatLog, final Agent agent) {
-        super(ItemType.AGENT_ATTACHMENT, messageId, chatLog);
+    AgentAttachmentWrapper(final String messageId, final AgentAttachment rowItem, final Agent agent) {
+        super(ItemType.AGENT_ATTACHMENT, messageId, rowItem);
         this.agent = agent;
     }
 
@@ -53,7 +53,7 @@ class AgentAttachmentWrapper extends ViewHolderWrapper<com.zopim.android.sdk.mod
     }
 
     @Override
-    public boolean isUpdated(final RowItem chatLog) {
+    public boolean isUpdated(final RowItem rowItem) {
         return false;
     }
 

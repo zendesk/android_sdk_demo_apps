@@ -8,20 +8,20 @@ import android.widget.ImageView;
 
 import com.zendesk.belvedere.Belvedere;
 import com.zendesk.belvedere.BelvedereFileProvider;
-import com.zopim.android.sdk.model.ChatLog;
 import com.zopim.android.sdk.model.items.RowItem;
+import com.zopim.android.sdk.model.items.VisitorAttachment;
 import com.zopim.android.sdk.util.BelvedereProvider;
 import com.zopim.sample.chatapi.R;
 
 import java.util.Locale;
 
-class VisitorAttachmentWrapper extends ViewHolderWrapper<com.zopim.android.sdk.model.items.VisitorAttachment> {
+class VisitorAttachmentWrapper extends ViewHolderWrapper<VisitorAttachment> {
 
     private final int progress;
 
-    VisitorAttachmentWrapper(final String messageId, final com.zopim.android.sdk.model.items.VisitorAttachment visitorAttachment) {
-        super(ItemType.VISITOR_ATTACHMENT, messageId, visitorAttachment);
-        progress = visitorAttachment.getUploadProgress();
+    VisitorAttachmentWrapper(final String messageId, final VisitorAttachment rowItem) {
+        super(ItemType.VISITOR_ATTACHMENT, messageId, rowItem);
+        progress = rowItem.getUploadProgress();
     }
 
     @Override
@@ -58,8 +58,8 @@ class VisitorAttachmentWrapper extends ViewHolderWrapper<com.zopim.android.sdk.m
     }
 
     @Override
-    public boolean isUpdated(final RowItem chatLog) {
-        return chatLog instanceof com.zopim.android.sdk.model.items.VisitorAttachment
-                && ((com.zopim.android.sdk.model.items.VisitorAttachment)chatLog).getUploadProgress() != progress;
+    public boolean isUpdated(final RowItem rowItem) {
+        return rowItem instanceof VisitorAttachment
+                && ((VisitorAttachment)rowItem).getUploadProgress() != progress;
     }
 }

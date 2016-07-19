@@ -40,6 +40,12 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+    }
+
+    @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         BelvedereProvider
@@ -51,12 +57,6 @@ public class ChatActivity extends AppCompatActivity {
                         presenter.sendFile(belvedereResults);
                     }
                 });
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        presenter.onDestroy();
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.zopim.sample.chatapi.chat.log;
 
 
 import com.zopim.android.sdk.data.DataSource;
-import com.zopim.android.sdk.model.ChatLog;
 import com.zopim.android.sdk.model.items.RowItem;
 import com.zopim.sample.chatapi.chat.log.items.ItemFactory;
 import com.zopim.sample.chatapi.chat.log.items.ViewHolderWrapper;
@@ -32,29 +31,30 @@ public class ChatLogModel implements ChatLogMvp.Model {
     }
 
     @Override
-    public ChatLogUpdateResult updateChatLog(final Map<String, RowItem> chatLogMap) {
+    public ChatLogUpdateResult updateChatLog(final Map<String, RowItem> chatItemMap) {
         final List<ViewHolderWrapper> viewHolderWrappers = new ArrayList<>(listItems);
         final List<ViewHolderWrapper> updateHolderWrapper = new ArrayList<>();
 
-        final List<Integer> updatedViewIndex = new ArrayList<>();
-        final List<Integer> insertedIndex = new ArrayList<>();
+        final List<Integer> updatedViewIndices = new ArrayList<>();
+        final List<Integer> insertedIndices = new ArrayList<>();
 
         boolean unableToDoIncrementalUpdate = false;
 
-        if (ItemFactory.countUsedMessages(chatLogMap.values()) < viewHolderWrappers.size()) {
+        if (ItemFactory.countUsedMessages(chatItemMap.values()) < viewHolderWrappers.size()) {
             viewHolderWrappers.clear();
             unableToDoIncrementalUpdate = true;
         }
 
-        for (Map.Entry<String, RowItem> entry : chatLogMap.entrySet()) {
+        for (Map.Entry<String, RowItem> entry : chatItemMap.entrySet()) {
             final ViewHolderWrapper holderById = findHolderById(viewHolderWrappers, entry.getKey());
 
             if (holderById != null && holderById.isUpdated(entry.getValue())) {
                 // Update an existing item
                 final ViewHolderWrapper wrapper = ItemFactory.get(entry.getKey(), entry.getValue(), dataSource.getAgents());
+
                 if (wrapper != null) {
                     updateHolderWrapper.add(wrapper);
-                    updatedViewIndex.add(updateHolderWrapper.size() - 1);
+                    updatedViewIndices.add(updateHolderWrapper.size() - 1);
                 } else {
                     // Not able to update item, remove from list
                     // we have to update the whole list
@@ -70,7 +70,7 @@ public class ChatLogModel implements ChatLogMvp.Model {
                 final ViewHolderWrapper wrapper = ItemFactory.get(entry.getKey(), entry.getValue(), dataSource.getAgents());
                 if (wrapper != null) {
                     updateHolderWrapper.add(wrapper);
-                    insertedIndex.add(updateHolderWrapper.size() - 1);
+                    insertedIndices.add(updateHolderWrapper.size() - 1);
                 }
             }
         }
@@ -81,7 +81,7 @@ public class ChatLogModel implements ChatLogMvp.Model {
         if (unableToDoIncrementalUpdate) {
             return ChatLogUpdateResult.create();
         } else {
-            return ChatLogUpdateResult.create(updatedViewIndex, insertedIndex);
+            return ChatLogUpdateResult.create(updatedViewIndices, insertedIndices);
         }
     }
 

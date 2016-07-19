@@ -9,19 +9,14 @@ import android.os.Looper;
 
 import com.zopim.android.sdk.api.ChatApi;
 import com.zopim.android.sdk.api.ChatSession;
-import com.zopim.android.sdk.data.ConnectionPath;
 import com.zopim.android.sdk.data.DataSource;
-import com.zopim.android.sdk.data.LivechatChatLogPath;
 import com.zopim.android.sdk.data.observers.ChatItemsObserver;
-import com.zopim.android.sdk.data.observers.ChatLogObserver;
 import com.zopim.android.sdk.data.observers.ConnectionObserver;
-import com.zopim.android.sdk.model.ChatLog;
 import com.zopim.android.sdk.model.Connection;
 import com.zopim.android.sdk.model.items.RowItem;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
-import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
 class ChatModel implements ChatMvp.Model {
@@ -58,13 +53,13 @@ class ChatModel implements ChatMvp.Model {
         }
 
         this.chatListener = new WeakReference<>(chatListener);
-        bindZopimListener();
+        bindChatListener();
     }
 
     @Override
     public void unregisterChatListener() {
         chatListener = null;
-        unbindZopimListener();
+        unbindChatListener();
     }
 
     @Override
@@ -74,7 +69,7 @@ class ChatModel implements ChatMvp.Model {
         }
     }
 
-    private void unbindZopimListener() {
+    private void unbindChatListener() {
         dataSource.deleteObservers();
 
         if (timeoutReceiver != null) {
@@ -83,14 +78,14 @@ class ChatModel implements ChatMvp.Model {
         }
     }
 
-    private void bindZopimListener() {
+    private void bindChatListener() {
         dataSource.addChatLogObserver(new ChatItemsObserver(context) {
             @Override
             protected void updateChatItems(final TreeMap<String, RowItem> treeMap) {
                 updateChatListener(new UpdateChatLogListener() {
                     @Override
                     public void update(final ChatListener chatListener) {
-                        chatListener.updateChatLog(treeMap);
+                        chatListener.onUpdateChatLog(treeMap);
                     }
                 });
             }
@@ -102,11 +97,7 @@ class ChatModel implements ChatMvp.Model {
                 updateChatListener(new UpdateChatLogListener() {
                     @Override
                     public void update(final ChatListener chatListener) {
-                        if(!chatApi.hasEnded()) {
-                            chatListener.updateConnection(connection);
-                        } else {
-                            chatListener.timeout();
-                        }
+                        chatListener.onUpdateConnection(connection);
                     }
                 });
             }
@@ -119,7 +110,7 @@ class ChatModel implements ChatMvp.Model {
                     updateChatListener(new UpdateChatLogListener() {
                         @Override
                         public void update(final ChatListener chatListener) {
-                            chatListener.timeout();
+                            chatListener.onTimeout();
                         }
                     });
                 }

@@ -2,7 +2,6 @@ package com.zopim.sample.chatapi.chat.log;
 
 
 import com.zendesk.util.CollectionUtils;
-import com.zopim.android.sdk.model.ChatLog;
 import com.zopim.android.sdk.model.items.RowItem;
 import com.zopim.sample.chatapi.chat.log.items.ViewHolderWrapper;
 
@@ -29,9 +28,9 @@ public class ChatLogPresenter implements ChatLogMvp.Presenter {
     }
 
     @Override
-    public void updateChatLog(final Map<String, RowItem> chatLogMap) {
+    public void updateChatLog(final Map<String, RowItem> chatItemMap) {
 
-        final ChatLogUpdateResult chatLogUpdateResult = model.updateChatLog(chatLogMap);
+        final ChatLogUpdateResult chatLogUpdateResult = model.updateChatLog(chatItemMap);
 
         if (chatLogUpdateResult.isUnableToDoIncrementalUpdate()) {
             view.refreshWholeList();

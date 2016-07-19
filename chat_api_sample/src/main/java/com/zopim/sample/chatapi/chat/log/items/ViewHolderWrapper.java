@@ -36,5 +36,5 @@ public abstract class ViewHolderWrapper<E extends RowItem> {
 
     public abstract void bind(RecyclerView.ViewHolder holder);
 
-    public abstract boolean isUpdated(RowItem chatLog);
+    public abstract boolean isUpdated(RowItem rowItem);
 }

@@ -4,7 +4,6 @@ package com.zopim.sample.chatapi.chat;
 import android.support.v4.app.FragmentActivity;
 
 import com.zendesk.belvedere.BelvedereResult;
-import com.zopim.android.sdk.model.ChatLog;
 import com.zopim.android.sdk.model.Connection;
 import com.zopim.android.sdk.model.items.RowItem;
 
@@ -28,21 +27,21 @@ interface ChatMvp {
 
         interface ChatListener {
 
-            void updateChatLog(Map<String, RowItem> chatlog);
+            void onUpdateChatLog(Map<String, RowItem> chatItemMap);
 
-            void updateConnection(Connection connection);
+            void onUpdateConnection(Connection connection);
 
-            void timeout();
+            void onTimeout();
         }
     }
 
     interface View {
 
-        void initChatLog(FragmentActivity activity);
+        void initChatUi(FragmentActivity activity);
 
         <E extends Presenter> void setPresenter(E presenter);
 
-        void updateChatLog(Map<String, RowItem> chatLogMap);
+        void updateChatLog(Map<String, RowItem> chatItemMap);
 
         void setInputEnabled(boolean enabled);
 
