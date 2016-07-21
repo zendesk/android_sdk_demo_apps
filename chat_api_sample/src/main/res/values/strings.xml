@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Chat API</string>
+
+    <string name="snackbar_connection">No connection</string>
+    <string name="snackbar_timeout">Timeout</string>
+    <string name="chat_input_hint">Write a message</string>
+
+</resources>

@@ -1,1 +1,1 @@
-include ':custom_fields_sample_app', ':request_list_with_add_ticket_sample_app'
+include ':custom_fields_sample_app', ':request_list_with_add_ticket_sample_app', ':chat_api_sample'
