@@ -93,7 +93,12 @@ public class UploadAttachmentActivity extends AppCompatActivity {
         belvedere.getFilesFromActivityOnResult(requestCode, resultCode, data, new BelvedereCallback<List<BelvedereResult>>() {
             @Override
             public void success(List<BelvedereResult> belvedereResults) {
-                progressDialog("Uploading your attachments...").show();
+
+                if (belvedereResults != null && belvedereResults.size() > 0) {
+                    progressDialog("Uploading your attachments...").show();
+                } else {
+                    return;
+                }
 
                 for (int i = 0, limit = belvedereResults.size(); i < limit; i++) {
 
