@@ -24,7 +24,7 @@ compile group: 'com.zopim.android', name: 'sdk-api', version: '1.3.0.1'
 * [ChatLogModel.java](https://github.com/zendesk/android_sdk_demo_apps/blob/master/chat_api_sample/src/main/java/com/zopim/sample/chatapi/chat/log/ChatLogModel.java)
   This file is responsible for filterring events, determining if events are new and updates and converts them to UI chat events.
   <br/>
-* [ChatLogView.swift](https://github.com/zendesk/android_sdk_demo_apps/blob/master/chat_api_sample/chat_api_sample/src/main/java/com/zopim/sample/chatapi/chat/log/ChatLogView.java)
+* [ChatLogView.java](https://github.com/zendesk/android_sdk_demo_apps/blob/master/chat_api_sample/chat_api_sample/src/main/java/com/zopim/sample/chatapi/chat/log/ChatLogView.java)
   This class is a `RecyclerView.Adapter` and provides the data required for the UI.
   <br/>
 * `AgentMessageWrapper`, `VisitorMessage`, `AgentAttachmentWrapper`, `VisitorAttachmentWrapper` 
