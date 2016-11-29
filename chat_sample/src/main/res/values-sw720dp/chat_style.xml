@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="ZopimChatTheme" parent="ZopimChatTheme.Light.Dialog">
+        <!-- Customize chat theme here. -->
+        <item name="colorAccent">@color/sample_red</item>
+        <item name="colorPrimary">@color/sample_red</item>
+        <item name="colorPrimaryDark">@color/sample_dark_red</item>
+    </style>
+
+</resources>
