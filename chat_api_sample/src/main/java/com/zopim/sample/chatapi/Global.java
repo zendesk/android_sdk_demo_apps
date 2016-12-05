@@ -8,8 +8,12 @@ import com.zopim.android.sdk.api.ZopimChatApi;
 
 public class Global extends Application {
 
-    private static final String LOG_TAG = "Global";
-    private final static String ACCOUNT_KEY = "";
+    /**
+     * Account config needed to initialize {@link com.zopim.android.sdk.api.ZopimChatApi#init(String)}
+     * <p/>
+     * Account key can be found in Zopim Dashboard at the <a href="https://dashboard.zopim.com/#widget/getting_started">Getting Started Page</a>
+     */
+    private final static String ACCOUNT_KEY = ""; // NB: Replace this key with your Zopim account key
 
     @Override
     public void onCreate() {
@@ -18,10 +22,8 @@ public class Global extends Application {
         // Enable logging
         Logger.setLoggable(true);
 
-        if(StringUtils.isEmpty(ACCOUNT_KEY)) {
-            Logger.e(LOG_TAG, "============================");
-            Logger.e(LOG_TAG, "== No Account Key defined ==");
-            Logger.e(LOG_TAG, "============================");
+        if (StringUtils.isEmpty(ACCOUNT_KEY)) {
+            throw new IllegalStateException("No Account Key defined");
         }
 
         // Initialize Chat SDK

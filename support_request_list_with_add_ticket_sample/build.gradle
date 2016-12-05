@@ -5,7 +5,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.zopim.sample.chatapi"
+        applicationId rootProject.ext.applicationId + ".requestlist"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -17,26 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    android {
-        dataBinding {
-            enabled true
-        }
-    }
-    lintOptions {
-        abortOnError true
-    }
-}
-
-ext {
-    picassoVersion = "2.5.1"
 }
 
 dependencies {
-    compile group: 'com.zopim.android', name: 'sdk-api', version: rootProject.ext.zopimSdkVersion
+    compile group: 'com.zendesk', name: 'sdk', version: rootProject.ext.zendeskSdkVersion
 
     compile group: 'com.android.support', name: 'appcompat-v7', version: rootProject.ext.appCompatVersion
-    compile group: 'com.android.support', name: 'design', version: rootProject.ext.appCompatVersion
-    compile group: 'com.android.support', name: 'recyclerview-v7', version: rootProject.ext.appCompatVersion
-
-    compile group: 'com.squareup.picasso', name: 'picasso', version: project.ext.picassoVersion
 }

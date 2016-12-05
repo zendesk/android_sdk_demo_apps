@@ -34,3 +34,6 @@ captures/
 # Android Studio IDEA folder
 .idea
 *.iml
+
+# OSX specific
+.DS_Store

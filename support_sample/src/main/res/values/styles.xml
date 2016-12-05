@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="ZendeskSdkTheme.Light.DarkActionBar">
+
+        <item name="RateMyAppPaddingTop">@dimen/rma_padding_top</item>
+        <item name="RateMyAppPaddingBottom">@dimen/rma_padding_bottom</item>
+
+        <item name="colorPrimary">@color/zendesk_color_primary</item>
+        <item name="colorPrimaryDark">@color/zendesk_color_primary_dark</item>
+        <item name="colorAccent">@color/zendesk_color_accent</item>
+
+        <!--
+            If you find that the accent color is not applied to the Dialog, you can
+            uncomment this line, and customize AppTheme.Dialog to your requirements
+        -->
+        <!--<item name="android:dialogTheme">@style/AppTheme.Dialog</item>-->
+    </style>
+
+    <!-- In AppCompat, the Dialog does not automatically inherit the accent -->
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/zendesk_color_accent</item>
+    </style>
+
+</resources>
