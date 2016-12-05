@@ -22,6 +22,3 @@ branches:
 
 script:
   - ./scripts/shell/travis.sh
-
-after_script:
-  - report ./.report
