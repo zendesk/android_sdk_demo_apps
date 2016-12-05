@@ -1,0 +1,27 @@
+sudo: required
+dist: precise
+language: android
+
+jdk:
+  - oraclejdk8
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - android-25
+    - build-tools-25.0.0
+    - extra-android-m2repository
+    - extra-google-m2repository
+  licenses:
+    - android-sdk-license-[0-9a-f]{8}
+
+branches:
+  only:
+    - master
+
+script:
+  - ./scripts/shell/travis.sh
+
+after_script:
+  - report ./.report
