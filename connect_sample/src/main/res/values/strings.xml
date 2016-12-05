@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">connect_sample</string>
+    <string name="show">Show</string>
+    <string name="abort">Abort</string>
+    <string name="preview">Preview</string>
+    <string name="cta">CTA</string>
+    <string name="no_cta">No CTA</string>
+</resources>

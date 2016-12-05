@@ -27,6 +27,14 @@ allprojects {
     repositories {
         jcenter()
         maven { url 'https://zendesk.artifactoryonline.com/zendesk/repo' }
+        maven {
+            credentials {
+                username zdRepoUsername
+                password zdRepoPassword
+            }
+
+            url 'https://zdrepo.artifactoryonline.com/zdrepo/repo/'
+        }
     }
 }
 
