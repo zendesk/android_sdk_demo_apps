@@ -7,7 +7,6 @@ import com.zendesk.logger.Logger;
 import zendesk.connect.ConnectSDK;
 import zendesk.core.AnonymousIdentity;
 import zendesk.core.Identity;
-import zendesk.core.JwtIdentity;
 import zendesk.core.Zendesk;
 
 public class Global extends Application {
@@ -30,17 +29,8 @@ public class Global extends Application {
                 "{oauthClientId}");
 
         /**
-         * Initialize Connect SDK
+         * Authenticate using an anonymous identity (with details).
          */
-        ConnectSDK.INSTANCE.init(Zendesk.INSTANCE);
-
-        /**
-         * Set an identity (authentication).
-         *
-         * @see https://github.com/zendesk/zendesk_sdk_documentation/blob/connect/connect/Android/setIdentity.md
-         */
-
-        // a). Authenticate using an anonymous identity (with details)
         Identity anon = new AnonymousIdentity.Builder()
                 .withExternalIdentifier("{optional external identifier}")
                 .withEmailIdentifier("{optional email}")
@@ -48,7 +38,9 @@ public class Global extends Application {
                 .build();
         Zendesk.INSTANCE.setIdentity(anon);
 
-        // b). Authenticate using your JWT endpoint
-        Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
+        /**
+         * Initialize Connect SDK
+         */
+        ConnectSDK.INSTANCE.init(Zendesk.INSTANCE);
     }
 }
