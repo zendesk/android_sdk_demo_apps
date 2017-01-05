@@ -3,6 +3,5 @@
     <string name="show">Show</string>
     <string name="abort">Abort</string>
     <string name="preview">Preview</string>
-    <string name="cta">CTA</string>
-    <string name="no_cta">No CTA</string>
+    <string name="new_id">New Identity</string>
 </resources>

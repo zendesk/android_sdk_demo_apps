@@ -7,6 +7,7 @@ ext {
     minSdkVersion = 16
     targetSdkVersion = 25
     zendeskSdkVersion = "1.7.3.1"
+    connectSdkVersion = "0.1.0.1-SNAPSHOT"
     zopimSdkVersion = "1.3.2.1"
     appCompatVersion = "25.0.1"
 }

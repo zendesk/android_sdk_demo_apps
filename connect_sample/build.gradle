@@ -19,12 +19,8 @@ android {
     }
 }
 
-ext {
-    connectSdkVersion = "0.1.0.1-SNAPSHOT"
-}
-
 dependencies {
-    compile group: 'com.zendesk', name: 'connect', version: project.ext.connectSdkVersion
+    compile group: 'com.zendesk', name: 'connect', version: rootProject.ext.connectSdkVersion
 
     compile group: 'com.android.support', name:'appcompat-v7', version: rootProject.ext.appCompatVersion
 }
