@@ -27,5 +27,5 @@ dependencies {
 
     compile group:'com.zendesk', name:'sdk-providers', version: rootProject.ext.zendeskSdkVersion
 
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile group:'com.android.support', name:'appcompat-v7', version: rootProject.ext.appCompatVersion
 }
