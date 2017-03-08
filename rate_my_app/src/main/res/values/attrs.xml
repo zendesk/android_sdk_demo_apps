@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="RateMyAppButtonStyle" format="reference" />
+    <attr name="RateMyAppTitleStyle" format="reference" />
+    <attr name="RateMyAppPaddingTop" format="reference|dimension" />
+    <attr name="RateMyAppPaddingBottom" format="reference|dimension" />
+    <attr name="RateMyAppDividerStyle" format="reference" />
+    <attr name="RateMyAppDividerHeight" format="reference|dimension" />
+
+</resources>

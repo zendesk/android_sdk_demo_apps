@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rma_dialog_group"
+    >
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/rate_my_app_dialog_title_label"
+
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="24sp"
+        android:paddingBottom="24dp"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:background="@android:color/white"
+        android:lineSpacingMultiplier="1.25"
+        />
+
+</LinearLayout>

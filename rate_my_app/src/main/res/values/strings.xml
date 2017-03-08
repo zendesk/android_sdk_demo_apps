@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">RateMyApp</string>
+
+    <string name="rate_my_app_dialog_dismiss_action_label">Don\'t ask me again</string>
+    <string name="rate_my_app_dialog_feedback_description_label">We want to make it better. Please tell us about any issues you\'re having.</string>
+    <string name="rate_my_app_dialog_feedback_device_api_version">OS API: %1$d</string>
+    <string name="rate_my_app_dialog_feedback_device_memory">Memory: %1$sMB / %2$sMB</string>
+    <string name="rate_my_app_dialog_feedback_device_model">Model: %1$s</string>
+    <string name="rate_my_app_dialog_feedback_device_name">Device: %1$s</string>
+    <string name="rate_my_app_dialog_feedback_device_os_version">OS version: %1$s</string>
+    <string name="rate_my_app_dialog_feedback_request_subject">App feedback</string>
+    <string name="rate_my_app_dialog_feedback_send_error_no_connectivity_toast">No connection</string>
+    <string name="rate_my_app_dialog_feedback_send_error_toast">There was an error, please try again</string>
+    <string name="rate_my_app_dialog_feedback_send_success_toast">Thank you for contacting us</string>
+    <string name="rate_my_app_dialog_feedback_title_label">Sorry about that</string>
+    <string name="rate_my_app_dialog_negative_action_label">No, send feedback</string>
+    <string name="rate_my_app_dialog_positive_action_label">Yes, rate our app</string>
+    <string name="rate_my_app_dialog_title_label">Are you happy with our app?</string>
+    <string name="rate_my_app_dialogue_feedback_cancel_button_label">Cancel</string>
+    <string name="rate_my_app_dialogue_feedback_issue_hint">Describe your issue</string>
+    <string name="rate_my_app_dialogue_feedback_send_button_label">Send feedback</string>
+
+</resources>

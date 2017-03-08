@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout style="@style/rma_feedback_message_container">
+
+        <TextView
+            android:text="@string/rate_my_app_dialog_feedback_title_label"
+            style="@style/rma_feedback_message_title" />
+
+        <TextView
+            android:text="@string/rate_my_app_dialog_feedback_description_label"
+            style="@style/rma_feedback_message_subtitle" />
+
+    </LinearLayout>
+
+    <View style="@style/rma_feedback_divider" />
+
+    <LinearLayout style="@style/rma_feedback_issue_container" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:hint="@string/rate_my_app_dialogue_feedback_issue_hint"
+                android:id="@+id/rma_feedback_issue_edittext"
+                style="@style/rma_feedback_issue_edittext" />
+
+            <ProgressBar
+                android:id="@+id/rma_feedback_issue_progress"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                style="@style/rma_feedback_progress" />
+
+        </FrameLayout>
+
+        <LinearLayout style="@style/rma_feedback_issue_button_container">
+
+            <Button
+                android:text="@string/rate_my_app_dialogue_feedback_cancel_button_label"
+                android:id="@+id/rma_feedback_issue_cancel_button"
+                style="@style/rma_feedback_issue_cancel_button" />
+
+            <Button
+                android:text="@string/rate_my_app_dialogue_feedback_send_button_label"
+                android:enabled="false"
+                android:id="@+id/rma_feedback_issue_send_button"
+                style="@style/rma_feedback_issue_send_button" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
