@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 
 import java.io.Serializable;
 
@@ -29,7 +28,7 @@ import java.io.Serializable;
  *     The actual sending of feedback must be implemented by the client. The provided {@link DialogActionListener}
  *     will receive a call to {@link DialogActionListener#onSendButtonClicked(String)} with the user's
  *     feedback when the "Send" button is clicked. This is the point at which the feedback should
- *     be recorded/sent.
+ *     be recorded/sent as desired.
  * </p>
  *
  */
@@ -72,7 +71,6 @@ public class FeedbackDialog extends DialogFragment implements Serializable {
         final View cancelButton = dialog.findViewById(R.id.rma_feedback_issue_cancel_button);
         final View sendButton = dialog.findViewById(R.id.rma_feedback_issue_send_button);
         final EditText editText = (EditText) dialog.findViewById(R.id.rma_feedback_issue_edittext);
-        final ProgressBar progressBar = (ProgressBar) dialog.findViewById(R.id.rma_feedback_issue_progress);
 
         if (cancelButton != null) {
             Log.d(LOG_TAG, "Inflating cancel button...");
@@ -105,7 +103,6 @@ public class FeedbackDialog extends DialogFragment implements Serializable {
 
                     sendButton.setEnabled(false);
                     editText.setEnabled(false);
-                    progressBar.setVisibility(View.VISIBLE);
 
                     final String feedback = editText.getText().toString();
 

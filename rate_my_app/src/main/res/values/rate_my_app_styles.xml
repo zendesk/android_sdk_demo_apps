@@ -1,77 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- ++++++++++++ -->
-    <!-- Start colors -->
-    <!-- ++++++++++++ -->
-
-    <color name="feedback_container">#ededed</color>
-    <color name="feedback_divider">#e5e5e5</color>
-
-    <!-- ++++++++++ -->
-    <!-- End colors -->
-    <!-- ++++++++++ -->
-
-
-    <!-- ++++++++++++++++ -->
-    <!-- Start dimensions -->
-    <!-- ++++++++++++++++ -->
-
-    <dimen name="rma_divider_height">1px</dimen>
-    <dimen name="rma_edit_text">18sp</dimen>
-    <dimen name="rma_button_text">16sp</dimen>
-    <dimen name="rma_title_text">22sp</dimen>
-    <dimen name="rma_subtitle_text">14sp</dimen>
-    <dimen name="rma_progress_height">@dimen/zd_progress_bar_small</dimen>
-    <dimen name="rma_progress_width">@dimen/zd_progress_bar_small</dimen>
-
-    <!-- ++++++++++++++ -->
-    <!-- End dimensions -->
-    <!-- ++++++++++++++ -->
-
-
-    <!-- +++++++++++++++++++++++++++++++++ -->
-    <!-- Start rate my app dialogue styles -->
-    <!-- +++++++++++++++++++++++++++++++++ -->
-
     <!-- The basic style for a button that will be shown in the RateMyApp dialogue -->
     <style name="rma_button">
         <item name="android:gravity">center</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/rma_button_text_size</item>
         <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">@dimen/view_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/view_horizontal_margin</item>
+        <item name="android:paddingTop">@dimen/view_vertical_margin</item>
+        <item name="android:paddingBottom">@dimen/view_vertical_margin</item>
+        <item name="android:background">@color/rma_dialog_button_background</item>
+        <item name="android:lineSpacingMultiplier">@dimen/rma_button_line_spacing</item>
     </style>
 
     <!-- The style for the title of the RateMyApp dialogue -->
     <style name="rma_title" parent="rma_button">
-        <item name="android:textSize">@dimen/rma_title_text</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/rma_title_text_size</item>
+        <item name="android:background">@color/rma_dialog_title_background</item>
+        <item name="android:lineSpacingMultiplier">@dimen/rma_title_line_spacing</item>
     </style>
 
     <!-- The style for the separator that will be between the rate my app buttons -->
     <style name="rma_divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/rma_divider_height</item>
-        <item name="android:background">@android:color/black</item>
+        <item name="android:background">@color/feedback_divider</item>
     </style>
 
-    <!-- +++++++++++++++++++++++++++++++ -->
-    <!-- End rate my app dialogue styles -->
-    <!-- +++++++++++++++++++++++++++++++ -->
-
-
-    <!-- ++++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- Start rate my app dialogue feedback styles -->
-    <!-- ++++++++++++++++++++++++++++++++++++++++++ -->
 
     <!-- This style is for the overall container of the RateMyApp feedback dialogue -->
     <style name="_rma_feedback_message_container">
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">24dp</item>
-        <item name="android:paddingLeft">24dp</item>
-        <item name="android:paddingRight">24dp</item>
-        <item name="android:paddingBottom">12dp</item>
-        <item name="android:background">@android:color/white</item>
+        <item name="android:paddingTop">@dimen/rma_feedback_dialog_padding_top</item>
+        <item name="android:paddingLeft">@dimen/rma_feedback_dialog_padding_left</item>
+        <item name="android:paddingRight">@dimen/rma_feedback_dialog_padding_right</item>
+        <item name="android:paddingBottom">@dimen/rma_feedback_dialog_padding_bottom</item>
+        <item name="android:background">@color/rma_feedback_dialog_background</item>
     </style>
 
     <style name="rma_feedback_message_container" parent="_rma_feedback_message_container" />
@@ -80,10 +48,10 @@
     <style name="_rma_feedback_message_title">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/rma_title_text</item>
+        <item name="android:textSize">@dimen/rma_title_text_size</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:layout_marginBottom">@dimen/rma_feedback_message_margin_bottom</item>
     </style>
 
     <style name="rma_feedback_message_title" parent="_rma_feedback_message_title" />
@@ -95,7 +63,7 @@
     <style name="_rma_feedback_message_subtitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/rma_subtitle_text</item>
+        <item name="android:textSize">@dimen/rma_subtitle_text_size</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:gravity">center</item>
     </style>
@@ -111,7 +79,7 @@
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">@dimen/activity_vertical_margin</item>
+        <item name="android:padding">@dimen/rma_feedback_issue_container_padding</item>
         <item name="android:background">@color/feedback_container</item>
     </style>
 
@@ -124,9 +92,9 @@
     <style name="_rma_feedback_issue_edittext">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/rma_edit_text</item>
+        <item name="android:textSize">@dimen/rma_edit_text_size</item>
         <item name="android:maxLines">5</item>
-        <item name="android:layout_marginBottom">@dimen/activity_vertical_margin</item>
+        <item name="android:layout_marginBottom">@dimen/rma_feedback_issue_edittext_bottom_padding</item>
     </style>
 
     <style name="rma_feedback_issue_edittext" parent="_rma_feedback_issue_edittext" />
@@ -146,7 +114,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">2</item>
-        <item name="android:textSize">@dimen/rma_button_text</item>
+        <item name="android:textSize">@dimen/rma_button_text_size</item>
     </style>
 
     <style name="rma_feedback_issue_cancel_button" parent="_rma_feedback_issue_cancel_button" />
@@ -156,7 +124,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">3</item>
-        <item name="android:textSize">@dimen/rma_button_text</item>
+        <item name="android:textSize">@dimen/rma_button_text_size</item>
     </style>
 
     <style name="rma_feedback_issue_send_button" parent="_rma_feedback_issue_send_button" />
@@ -173,19 +141,4 @@
 
     <style name="rma_feedback_divider" parent="_rma_feedback_divider" />
 
-    <!--
-        Style the image that will be overlaid onto the edittext when the feedback is in a sending
-        state.  This should be an indeterminate style of image like a spinner image
-    -->
-    <style name="_rma_feedback_progress" parent="@style/Widget.AppCompat.ProgressBar">
-        <item name="android:layout_height">@dimen/rma_progress_height</item>
-        <item name="android:layout_width">@dimen/rma_progress_width</item>
-        <item name="android:layout_marginBottom">6dp</item>
-    </style>
-
-    <style name="rma_feedback_progress" parent="_rma_feedback_progress" />
-
-    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- End rate my app dialogue feedback styles -->
-    <!-- ++++++++++++++++++++++++++++++++++++++++ -->
 </resources>

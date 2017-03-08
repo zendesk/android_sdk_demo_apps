@@ -19,24 +19,12 @@
 
     <View style="@style/rma_feedback_divider" />
 
-    <LinearLayout style="@style/rma_feedback_issue_container" >
+    <LinearLayout style="@style/rma_feedback_issue_container">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:hint="@string/rate_my_app_dialogue_feedback_issue_hint"
-                android:id="@+id/rma_feedback_issue_edittext"
-                style="@style/rma_feedback_issue_edittext" />
-
-            <ProgressBar
-                android:id="@+id/rma_feedback_issue_progress"
-                android:visibility="gone"
-                android:layout_gravity="center"
-                style="@style/rma_feedback_progress" />
-
-        </FrameLayout>
+        <EditText
+            android:id="@+id/rma_feedback_issue_edittext"
+            style="@style/rma_feedback_issue_edittext"
+            android:hint="@string/rate_my_app_dialogue_feedback_issue_hint" />
 
         <LinearLayout style="@style/rma_feedback_issue_button_container">
 

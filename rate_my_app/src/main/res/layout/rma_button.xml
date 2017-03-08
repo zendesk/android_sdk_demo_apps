@@ -2,14 +2,5 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
-    android:background="#f1f1f1"
-    android:gravity="center"
-    android:textSize="18sp"
-    android:layout_weight="1"
-    android:lineSpacingMultiplier="1.25"
+    style="@style/rma_button"
     />
