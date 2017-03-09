@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +37,7 @@ import java.util.List;
  *
  */
 @SuppressWarnings("unused")
-public class RateMyAppDialog extends DialogFragment implements Serializable {
+public class RateMyAppDialog extends DialogFragment {
 
     /**
      * This is the name of the tag that will be set on the

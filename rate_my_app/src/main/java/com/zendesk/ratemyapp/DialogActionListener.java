@@ -1,8 +1,6 @@
 package com.zendesk.ratemyapp;
 
-import java.io.Serializable;
-
-public interface DialogActionListener extends Serializable {
+public interface DialogActionListener {
 
     void storeButtonClicked();
 
