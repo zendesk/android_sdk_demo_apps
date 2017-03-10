@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.zendesk.logger.Logger;
 import com.zendesk.ratemyapp.DialogActionListener;
+import com.zendesk.ratemyapp.RateMyAppConfig;
 import com.zendesk.ratemyapp.RateMyAppDialog;
 import com.zendesk.sdk.model.access.AnonymousIdentity;
 import com.zendesk.sdk.model.access.Identity;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String ZENDESK_APP_ID = "8f10e8cab14b26fd665c4afb9213809d9ba39750b72a1119";
     private static final String ZENDESK_OAUTH_CLIENT_ID = "mobile_sdk_client_ec5abaf13f66cb3fe72d";
 
+    private RateMyAppConfig config;
+
     private ProgressDialog progressDialog;
 
     @Override
@@ -40,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
         Logger.setLoggable(true);
         // and initialise the Zendesk Support SDK
         initialiseZendesk();
+
+        // Instantiate the demo RateMyAppConfig object we'll be using for our buttons.
+        config = new RateMyAppConfig.Builder()
+                .withAndroidStoreRatingButton(PLAY_STORE_URL)
+                .withVersion(getApplicationContext(), BuildConfig.VERSION_NAME)
+                .build();
 
         // Show dialog that respects the "Don't Ask Again" behaviour
         setupShowButton();
@@ -55,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
         showBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buildRateMyAppDialog(zendeskActionListener)
-                        .show(MainActivity.this);
+                RateMyAppDialog.show(MainActivity.this, config, zendeskActionListener);
             }
         });
     }
@@ -67,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
         showAlwaysButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buildRateMyAppDialog(zendeskActionListener)
-                        .showAlways(MainActivity.this);
+                RateMyAppDialog.showAlways(MainActivity.this, config, zendeskActionListener);
             }
         });
     }
@@ -79,18 +86,9 @@ public class MainActivity extends AppCompatActivity {
         showOtherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buildRateMyAppDialog(otherActionListener)
-                        .showAlways(MainActivity.this);
+                RateMyAppDialog.show(MainActivity.this, config, otherActionListener);
             }
         });
-    }
-
-    private RateMyAppDialog buildRateMyAppDialog(DialogActionListener actionListener) {
-        return new RateMyAppDialog.Builder(MainActivity.this)
-                .withAndroidStoreRatingButton(PLAY_STORE_URL) // The Play Store listing to direct positive reviews to
-                .withVersion(BuildConfig.VERSION_NAME) // The version to use for "don't ask again for this version" behaviour
-                .withDialogActionListener(actionListener) // The callback object that is notified of user actions within the dialog
-                .build();
     }
 
     private void initialiseZendesk() {
