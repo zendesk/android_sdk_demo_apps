@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/rma_dialog_group"
-    >
-    
-    <TextView
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/rma_deflection_group"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="@string/rate_my_app_dialog_title_label"
-        style="@style/rma_title"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/rma_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/rate_my_app_dialog_title_label" />
+
+    </LinearLayout>
+
+    <include layout="@layout/rma_feedback_dialog"
+        android:id="@+id/rma_feedback_group"
+        android:visibility="gone"
         />
 
-</LinearLayout>
+</FrameLayout>

@@ -7,14 +7,16 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -50,9 +52,20 @@ public class RateMyAppDialog extends DialogFragment {
     static final String PREFS_FILE = "rateMyApp";
     static final String PREFS_DONT_ASK_VERSION_KEY = "appVersion";
 
+    private ViewGroup deflectionGroup;
+
+    private ViewGroup feedbackGroup;
+
     private DialogActionListener dialogActionListener;
 
     private RateMyAppConfig config;
+
+    private ViewState viewState;
+
+    private enum ViewState {
+        DEFLECTION,
+        FEEDBACK
+    }
 
     public static void show(AppCompatActivity activity, RateMyAppConfig config, DialogActionListener actionListener) {
         if (!config.canShow()) {
@@ -85,14 +98,16 @@ public class RateMyAppDialog extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (savedInstanceState != null && ViewState.FEEDBACK.name()
+                .equals(savedInstanceState.getString(ViewState.class.getName()))) {
+            viewState = ViewState.FEEDBACK;
+        } else {
+            viewState = ViewState.DEFLECTION;
+        }
+
+        setRetainInstance(true);
+
         setStyle(STYLE_NO_TITLE, getTheme());
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
-        dialogActionListener = null;
     }
 
     @Override
@@ -100,19 +115,34 @@ public class RateMyAppDialog extends DialogFragment {
 
         ViewGroup dialogViewGroup = (ViewGroup) inflater.inflate(R.layout.rma_dialog, container, false);
 
-        addStoreButton(inflater, dialogViewGroup);
+        deflectionGroup = (ViewGroup) dialogViewGroup.findViewById(R.id.rma_deflection_group);
+        feedbackGroup = (ViewGroup) dialogViewGroup.findViewById(R.id.rma_feedback_group);
 
-        addFeedbackButton(inflater, dialogViewGroup);
+        setupDeflectionGroup(inflater);
+        setupFeedbackGroup();
 
-        addDontRemindMeAgainButton(inflater, dialogViewGroup);
+        if (viewState == ViewState.FEEDBACK) {
+            toggleViewSwitch();
+        }
 
         return dialogViewGroup;
     }
 
-    private void addStoreButton(LayoutInflater inflater, ViewGroup container) {
-        addDivider(inflater, container);
+    private void toggleViewSwitch() {
+        deflectionGroup.setVisibility(viewState == ViewState.DEFLECTION ? View.VISIBLE : View.GONE);
+        feedbackGroup.setVisibility(viewState == ViewState.FEEDBACK ? View.VISIBLE : View.GONE);
+    }
 
-        TextView buttonTextView = (TextView) inflater.inflate(R.layout.rma_button, container, false);
+    private void setupDeflectionGroup(LayoutInflater inflater) {
+        addStoreButton(inflater);
+        addFeedbackButton(inflater);
+        addDontRemindMeAgainButton(inflater);
+    }
+
+    private void addStoreButton(LayoutInflater inflater) {
+        addDivider(inflater, deflectionGroup);
+
+        TextView buttonTextView = (TextView) inflater.inflate(R.layout.rma_button, deflectionGroup, false);
         buttonTextView.setText(R.string.rate_my_app_dialog_positive_action_label);
         buttonTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,54 +158,33 @@ public class RateMyAppDialog extends DialogFragment {
                 startActivity(storeIntent);
             }
         });
-        container.addView(buttonTextView);
+        deflectionGroup.addView(buttonTextView);
     }
 
-    private void addFeedbackButton(LayoutInflater inflater, ViewGroup container) {
-        addDivider(inflater, container);
+    private void addFeedbackButton(LayoutInflater inflater) {
+        addDivider(inflater, deflectionGroup);
 
-        TextView buttonTextView = (TextView) inflater.inflate(R.layout.rma_button, container, false);
+        TextView buttonTextView = (TextView) inflater.inflate(R.layout.rma_button, deflectionGroup, false);
         buttonTextView.setText(R.string.rate_my_app_dialog_negative_action_label);
         buttonTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                viewState = ViewState.FEEDBACK;
+                toggleViewSwitch();
+
                 if (dialogActionListener != null) {
                     dialogActionListener.feedbackButtonClicked();
                 }
-
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                Fragment rmaDialog = fragmentManager.findFragmentByTag(RMA_DIALOG_TAG);
-
-                if (rmaDialog != null) {
-                    fragmentTransaction.remove(rmaDialog);
-                }
-
-                fragmentTransaction.commit();
-                fragmentManager.popBackStackImmediate();
-
-                fragmentTransaction = fragmentManager.beginTransaction();
-                Fragment feedbackDialogFragment = fragmentManager.findFragmentByTag(FeedbackDialog.FEEDBACK_DIALOG_TAG);
-
-                if (feedbackDialogFragment != null) {
-                    fragmentTransaction.remove(feedbackDialogFragment);
-                }
-
-                fragmentTransaction.addToBackStack(null);
-
-                FeedbackDialog feedbackDialog = FeedbackDialog.newInstance(dialogActionListener);
-                feedbackDialog.show(fragmentTransaction, FeedbackDialog.FEEDBACK_DIALOG_TAG);
             }
         });
 
-        container.addView(buttonTextView);
+        deflectionGroup.addView(buttonTextView);
     }
 
-    private void addDontRemindMeAgainButton(LayoutInflater inflater, ViewGroup container) {
-        addDivider(inflater, container);
+    private void addDontRemindMeAgainButton(LayoutInflater inflater) {
+        addDivider(inflater, deflectionGroup);
 
-        TextView buttonTextView = (TextView) inflater.inflate(R.layout.rma_button, container, false);
+        TextView buttonTextView = (TextView) inflater.inflate(R.layout.rma_button, deflectionGroup, false);
         buttonTextView.setText(R.string.rate_my_app_dialog_dismiss_action_label);
         buttonTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,7 +204,7 @@ public class RateMyAppDialog extends DialogFragment {
             }
         });
 
-        container.addView(buttonTextView);
+        deflectionGroup.addView(buttonTextView);
     }
 
     private void addDivider(LayoutInflater inflater, ViewGroup container) {
@@ -203,46 +212,92 @@ public class RateMyAppDialog extends DialogFragment {
         container.addView(divider);
     }
 
-    /**
-     * This method can be used to tear down the RateMyAppDialog if it has been shown.
-     *
-     * @param fragmentManager The fragment manager in which transactions will run to remove the fragments
-     */
-    public void tearDownDialog(FragmentManager fragmentManager) {
+    private void setupFeedbackGroup() {
+        final View cancelButton = feedbackGroup.findViewById(R.id.rma_feedback_issue_cancel_button);
+        final View sendButton = feedbackGroup.findViewById(R.id.rma_feedback_issue_send_button);
+        final EditText editText = (EditText) feedbackGroup.findViewById(R.id.rma_feedback_issue_edittext);
 
-        if (fragmentManager == null) {
-            Log.d(LOG_TAG, "Supplied FragmentManager was null, cannot continue...");
-            return;
+        if (cancelButton != null) {
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dismiss();
+
+                    if (dialogActionListener!= null) {
+                        Log.d(LOG_TAG, "Notifying feedback listener of submission cancellation");
+                        dialogActionListener.cancelled();
+                    }
+                }
+            });
         }
 
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment feedbackDialogFragment = fragmentManager.findFragmentByTag(FeedbackDialog.FEEDBACK_DIALOG_TAG);
+        if (sendButton == null || editText == null) {
+            Log.w(LOG_TAG, "Could not setOnClickListener because views were null");
+        } else {
+            sendButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (cancelButton != null) {
+                        cancelButton.setEnabled(false);
+                    }
 
-        if (feedbackDialogFragment != null) {
-            Log.d(LOG_TAG, "feedback dialog found for removal");
-            fragmentTransaction.remove(feedbackDialogFragment);
+                    sendButton.setEnabled(false);
+                    editText.setEnabled(false);
+
+                    final String feedback = editText.getText().toString();
+
+                    if (dialogActionListener != null) {
+                        dialogActionListener.onSendButtonClicked(feedback);
+                    }
+
+                    dismiss();
+                }
+            });
         }
 
-        fragmentTransaction.commit();
+        if (editText != null) {
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    if (sendButton == null) {
+                        Log.e(LOG_TAG, "ignoring afterTextChanged() because sendButton is null");
+                        return;
+                    }
 
-        fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment rmaDialog = fragmentManager.findFragmentByTag(RateMyAppDialog.RMA_DIALOG_TAG);
+                    if (editable == null || editable.length() == 0) {
+                        sendButton.setEnabled(false);
+                    } else {
+                        sendButton.setEnabled(true);
+                    }
+                }
 
-        if (rmaDialog != null) {
-            Log.d(LOG_TAG, "RateMyApp dialog found for removal");
-            fragmentTransaction.remove(rmaDialog);
+                @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            });
         }
-
-        fragmentTransaction.commit();
-        fragmentManager.popBackStackImmediate();
-
-        fragmentManager.executePendingTransactions();
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(ViewState.class.getName(), viewState.name());
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+        dialogActionListener = null;
+    }
+
+    /**
+     * This is a hacky workaround as per https://code.google.com/p/android/issues/detail?id=17423
+     * to retain the Fragment on configuration change.
+     */
+    @Override
     public void onDestroyView() {
         Dialog dialog = getDialog();
-        // handles https://code.google.com/p/android/issues/detail?id=17423
         if (dialog != null && getRetainInstance()) {
             dialog.setDismissMessage(null);
         }
