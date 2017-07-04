@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="@string/create_ticket"
+        android:id="@+id/action_create_ticket"
+        android:icon="@drawable/ic_add_light"
+        app:showAsAction="always"
+        android:visible="true"
+        android:enabled="true"
+        android:checkable="false" />
+</menu>

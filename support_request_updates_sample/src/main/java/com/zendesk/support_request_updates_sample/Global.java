@@ -1,4 +1,4 @@
-package com.zendesk.sample.customfields;
+package com.zendesk.support_request_updates_sample;
 
 import android.app.Application;
 
@@ -19,7 +19,7 @@ public class Global extends Application {
         /**
          * Initialize the SDK with your Zendesk subdomain, mobile SDK app ID, and client ID.
          *
-         * Get these details from your Zendesk dashboard: Admin -> Channels -> MobileSDK.
+         * Get these details from your Zendesk dashboard: Admin -> Channels -> MobileSDK
          */
         ZendeskConfig.INSTANCE.init(this,
                 "https://{subdomain}.zendesk.com",
@@ -32,7 +32,7 @@ public class Global extends Application {
          * Set either Anonymous or JWT identity, as below:
          */
 
-        // a). Anonymous (All fields are optional)
+        // a). Anonymous (All fields are optional.)
         ZendeskConfig.INSTANCE.setIdentity(
                 new AnonymousIdentity.Builder()
                         .withNameIdentifier("{optional name}")
