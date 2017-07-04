@@ -21,5 +21,4 @@ android {
 
 dependencies {
     compile group: 'com.zendesk', name: 'sdk', version: rootProject.ext.zendeskSdkVersion
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
