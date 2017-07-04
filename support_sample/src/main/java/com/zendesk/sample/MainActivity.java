@@ -83,7 +83,6 @@ public class MainActivity extends FragmentActivity {
                 }
 
                 new SupportActivity.Builder()
-                        .showContactUsButton(true)
                         .withLabelNames(labelsArray)
                         .show(MainActivity.this);
             }

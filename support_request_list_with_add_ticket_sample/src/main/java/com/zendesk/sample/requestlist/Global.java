@@ -37,7 +37,6 @@ public class Global extends Application {
                 new AnonymousIdentity.Builder()
                         .withNameIdentifier("{optional name}")
                         .withEmailIdentifier("{optional email}")
-                        .withExternalIdentifier("{optional external identifier}")
                         .build()
         );
 
