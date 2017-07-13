@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.zendesk.example.ua" >
+
+    <!--Enable the following permission if you wish to have auto complete of email address in Contact UI-->
+    <!--<uses-permission android:name="android.permission.GET_ACCOUNTS" />-->
+
+    <!--
+        Enable the following permission if you wish to allow the SDK to determine whether global sync
+        is enabled or not to be kinder to the battery
+    -->
+    <!--<uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />-->
+
+    <!-- Enable the following permissions if you wish to have the option to show attachment images in fullscreen -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        tools:replace="android:theme"
+        android:name=".Global">
+
+        <activity   
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+        ========================
+        Urban Airship - Receiver
+        ========================
+        -->
+
+        <!-- OPTIONAL, if you want to receive push, push opened and registration completed intents -->
+        <receiver
+            android:name="com.zendesk.example.ua.IntentReceiver"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="com.urbanairship.push.CHANNEL_UPDATED" />
+                <action android:name="com.urbanairship.push.OPENED" />
+                <action android:name="com.urbanairship.push.RECEIVED" />
+                <action android:name="com.urbanairship.push.DISMISSED" />
+
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

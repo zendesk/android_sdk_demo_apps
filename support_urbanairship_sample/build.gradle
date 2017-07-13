@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.applicationId + ".urbanairship"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    lintOptions {
+        abortOnError true
+        lintConfig file("lint-rules.xml")
+    }
+}
+
+dependencies {
+    compile group: 'com.zendesk', name: 'sdk', version: rootProject.ext.zendeskSdkVersion
+    compile 'com.urbanairship.android:urbanairship-sdk:8.3.+'
+}
