@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="zd_url">[zendesk_url]</string>
+    <string name="zd_appid">[app_id]</string>
+    <string name="zd_oauth">[oauth_token]</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress XmlUnboundNsPrefix -->
+<lint>
+
+    <issue id="InvalidPackage">
+        <!-- https://github.com/square/okio/issues/58 -->
+        <ignore regexp="okio"/>
+
+        <ignore regexp="java.lang.invoke"/>
+
+        <!-- zendesk_java_common references to java.awt, what is not available in Android-->
+        <ignore regexp="java.awt.*"/>
+    </issue>
+
+</lint>

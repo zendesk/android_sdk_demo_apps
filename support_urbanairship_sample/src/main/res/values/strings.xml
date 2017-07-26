@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SDK Sample UA</string>
+    <string name="main_btn_rate_my_app">Rate my app</string>
+    <string name="main_btn_contact">Contact Zendesk</string>
+    <string name="main_btn_request_list">Ticket List</string>
+    <string name="contact_fragment_title">Contact Zendesk</string>
+    <string name="encryption_test_edittext_hint">Text to encrypt</string>
+    <string name="title_activity_network_test">NetworkTestActivity</string>
+    <string name="main_btn_helpcenter">Support</string>
+    <string name="subdomain_label">Enter your Zendesk URL like \'mysubdomain\' or an ip address like: \'http://192.168.1.10:80\'</string>
+    <string name="label_ok">OK</string>
+    <string name="appid_label">Application ID</string>
+    <string name="clientid_label">Client ID</string>
+    <string name="jwt_useridentifer_label">JWT User Identifier, based on your server side configuration</string>
+    <string name="anon_name_label">Optional name of the end-user</string>
+    <string name="anon_email_label">Optional email of the end user</string>
+    <string name="anon_external_id_label">Optional external ID of the end user</string>
+    <string name="activity_entry_menu_clear">Clear</string>
+    <string name="main_edittext_support_hint">label1,label2 or [category_id] (optional)</string>
+    <string name="activity_entry_jwt">JWT</string>
+    <string name="activity_extra_anonymous">Anonymous</string>
+
+    <string name="main_edittext_push_hint">Push device token</string>
+    <string name="main_btn_push_register">Register Push</string>
+    <string name="main_btn_push_unregister">Unregister Push</string>
+
+</resources>
