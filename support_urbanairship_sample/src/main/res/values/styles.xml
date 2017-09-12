@@ -7,9 +7,6 @@
         <item name="colorPrimaryDark">@color/zendesk_color_primary_dark</item>
         <item name="colorAccent">@color/zendesk_color_accent</item>
 
-        <item name="RateMyAppPaddingTop">@dimen/rma_padding_top</item>
-        <item name="RateMyAppPaddingBottom">@dimen/rma_padding_bottom</item>
-
         <item name="android:textAppearance">@style/grey_text</item>
     </style>
 
