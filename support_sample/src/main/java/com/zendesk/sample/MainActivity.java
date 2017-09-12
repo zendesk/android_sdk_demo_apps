@@ -37,17 +37,6 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        /**
-         * This will make the RateMyApp dialog activity.
-         */
-        findViewById(R.id.main_btn_rate_my_app).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, RateMyAppDialogTest.class));
-            }
-        });
-
         /**
          * This will make a full-screen feedback screen appear. It is very similar to how
          * the feedback dialog works but it is hosted in an activity.

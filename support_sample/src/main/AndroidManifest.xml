@@ -39,10 +39,5 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name="com.zendesk.sample.RateMyAppDialogTest"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_rate_my_app_dialogue_test" />
-
     </application>
 </manifest>

@@ -17,12 +17,6 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/main_btn_rate_my_app"
-            android:id="@+id/main_btn_rate_my_app" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/main_btn_contact"
             android:id="@+id/main_btn_contact" />
 
