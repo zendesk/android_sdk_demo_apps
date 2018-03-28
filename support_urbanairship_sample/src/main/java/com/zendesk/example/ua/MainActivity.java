@@ -1,6 +1,5 @@
 package com.zendesk.example.ua;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -10,16 +9,15 @@ import android.widget.Toast;
 import com.urbanairship.UAirship;
 import com.urbanairship.google.PlayServicesUtils;
 import com.zendesk.logger.Logger;
-import com.zendesk.sdk.feedback.ui.ContactZendeskActivity;
-import com.zendesk.sdk.model.access.Identity;
-import com.zendesk.sdk.model.push.PushRegistrationResponse;
-import com.zendesk.sdk.network.impl.ZendeskConfig;
-import com.zendesk.sdk.requests.RequestActivity;
-import com.zendesk.sdk.support.SupportActivity;
 import com.zendesk.service.ErrorResponse;
 import com.zendesk.service.ZendeskCallback;
 
 import java.util.Locale;
+
+import zendesk.core.Zendesk;
+import zendesk.support.guide.HelpCenterActivity;
+import zendesk.support.request.RequestActivity;
+import zendesk.support.requestlist.RequestListActivity;
 
 /**
  * This activity is a springboard that you can use to launch various parts of the Zendesk SDK.
@@ -27,19 +25,6 @@ import java.util.Locale;
 public class MainActivity extends FragmentActivity {
 
     private static final String LOG_TAG = "MainActivity";
-
-    private Identity getZendeskIdentity(){
-        Identity user = null;
-
-        // Anonymous:
-        // user = new AnonymousIdentity.Builder()
-        //      .build();
-
-        // JWT:
-        // user = new JwtIdentity("<jwt_id>");
-
-        return user;
-    }
 
     @Override
     public void onStart() {
@@ -61,8 +46,7 @@ public class MainActivity extends FragmentActivity {
         findViewById(R.id.main_btn_contact).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ContactZendeskActivity.class);
-                startActivity(intent);
+                RequestActivity.builder().show(MainActivity.this);
             }
         });
 
@@ -73,14 +57,15 @@ public class MainActivity extends FragmentActivity {
         findViewById(R.id.main_btn_request_list).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, RequestActivity.class));
+                RequestListActivity.builder().show(MainActivity.this);
+
             }
         });
 
         findViewById(R.id.main_btn_support).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new SupportActivity.Builder().show(MainActivity.this);
+                HelpCenterActivity.builder().show(MainActivity.this);
             }
         });
 
@@ -89,9 +74,9 @@ public class MainActivity extends FragmentActivity {
         findViewById(R.id.main_btn_push_register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZendeskConfig.INSTANCE.enablePushWithUAChannelId(devicePushToken.getText().toString(), new ZendeskCallback<PushRegistrationResponse>() {
+                Zendesk.INSTANCE.provider().pushRegistrationProvider().registerWithUAChannelId(devicePushToken.getText().toString(), new ZendeskCallback<String>() {
                     @Override
-                    public void onSuccess(PushRegistrationResponse result) {
+                    public void onSuccess(String result) {
                         Toast.makeText(getApplicationContext(), "Registration success", Toast.LENGTH_SHORT).show();
                     }
 
@@ -106,7 +91,7 @@ public class MainActivity extends FragmentActivity {
         findViewById(R.id.main_btn_push_unregister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZendeskConfig.INSTANCE.disablePush(devicePushToken.getText().toString(), new ZendeskCallback<Void>() {
+                Zendesk.INSTANCE.provider().pushRegistrationProvider().unregisterDevice(new ZendeskCallback<Void>() {
                     @Override
                     public void onSuccess(Void result) {
                         Toast.makeText(getApplicationContext(), "Deregistration success", Toast.LENGTH_SHORT).show();

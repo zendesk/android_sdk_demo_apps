@@ -23,18 +23,18 @@ import android.widget.EditText;
 import com.zendesk.belvedere.Belvedere;
 import com.zendesk.belvedere.BelvedereCallback;
 import com.zendesk.belvedere.BelvedereResult;
-import com.zendesk.sdk.model.access.AnonymousIdentity;
-import com.zendesk.sdk.model.access.JwtIdentity;
-import com.zendesk.sdk.model.request.CreateRequest;
-import com.zendesk.sdk.model.request.UploadResponse;
-import com.zendesk.sdk.network.RequestProvider;
-import com.zendesk.sdk.network.UploadProvider;
-import com.zendesk.sdk.network.impl.ZendeskConfig;
 import com.zendesk.service.ErrorResponse;
 import com.zendesk.service.ZendeskCallback;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import zendesk.support.CreateRequest;
+import zendesk.support.Request;
+import zendesk.support.RequestProvider;
+import zendesk.support.Support;
+import zendesk.support.UploadProvider;
+import zendesk.support.UploadResponse;
 
 public class UploadAttachmentActivity extends AppCompatActivity {
 
@@ -183,9 +183,9 @@ public class UploadAttachmentActivity extends AppCompatActivity {
 
             CreateRequest request = buildCreateRequest();
 
-            requestProvider.createRequest(request, new ZendeskCallback<CreateRequest>() {
+            requestProvider.createRequest(request, new ZendeskCallback<Request>() {
                 @Override
-                public void onSuccess(CreateRequest request) {
+                public void onSuccess(Request request) {
                     invalidateOptionsMenu();
                     progressDialog().dismiss();
 
@@ -236,8 +236,8 @@ public class UploadAttachmentActivity extends AppCompatActivity {
 
 
     private void initializeZendeskProviders() {
-        uploadProvider = ZendeskConfig.INSTANCE.provider().uploadProvider();
-        requestProvider = ZendeskConfig.INSTANCE.provider().requestProvider();
+        uploadProvider = Support.INSTANCE.provider().uploadProvider();
+        requestProvider = Support.INSTANCE.provider().requestProvider();
     }
 
     private void initializeBelvedereFilePicker() {

@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId 'com.zopim.sample.chat'
@@ -20,5 +19,5 @@ android {
 }
 
 dependencies {
-    compile group: 'com.zopim.android', name: 'sdk', version: rootProject.ext.zopimSdkVersion
+    implementation group: 'com.zopim.android', name: 'sdk', version: rootProject.ext.zopimSdkVersion
 }

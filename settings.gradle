@@ -1,1 +1,1 @@
-include ':support_custom_fields_sample', ':support_request_list_with_add_ticket_sample', ':chat_api_sample', ':support_upload_attachment_sample', ':support_sample', ':chat_sample', ':support_request_updates_sample', ':support_urbanairship_sample'
+include ':support_custom_fields_sample', ':chat_api_sample', ':support_upload_attachment_sample', ':support_sample', ':chat_sample', ':support_request_updates_sample', ':support_urbanairship_sample'

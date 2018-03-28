@@ -1,3 +1,0 @@
-## Adding an action to RequestActivity
-
-This sample shows you how to extend `RequestActivity` so that you can add an action to the toolbar.

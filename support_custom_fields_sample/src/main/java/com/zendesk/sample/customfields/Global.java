@@ -3,9 +3,11 @@ package com.zendesk.sample.customfields;
 import android.app.Application;
 
 import com.zendesk.logger.Logger;
-import com.zendesk.sdk.model.access.AnonymousIdentity;
-import com.zendesk.sdk.model.access.JwtIdentity;
-import com.zendesk.sdk.network.impl.ZendeskConfig;
+
+import zendesk.core.AnonymousIdentity;
+import zendesk.core.JwtIdentity;
+import zendesk.core.Zendesk;
+import zendesk.support.Support;
 
 public class Global extends Application {
 
@@ -21,7 +23,7 @@ public class Global extends Application {
          *
          * Get these details from your Zendesk dashboard: Admin -> Channels -> MobileSDK.
          */
-        ZendeskConfig.INSTANCE.init(this,
+        Zendesk.INSTANCE.init(this,
                 "https://{subdomain}.zendesk.com",
                 "{applicationId}",
                 "{oauthClientId}");
@@ -33,7 +35,7 @@ public class Global extends Application {
          */
 
         // a). Anonymous (All fields are optional)
-        ZendeskConfig.INSTANCE.setIdentity(
+        Zendesk.INSTANCE.setIdentity(
                 new AnonymousIdentity.Builder()
                         .withNameIdentifier("{optional name}")
                         .withEmailIdentifier("{optional email}")
@@ -41,6 +43,8 @@ public class Global extends Application {
         );
 
         // b). JWT (Must be initialized with your JWT identifier)
-        ZendeskConfig.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
+        Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
+
+        Support.INSTANCE.init(Zendesk.INSTANCE);
     }
 }

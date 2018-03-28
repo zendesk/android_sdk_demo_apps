@@ -9,15 +9,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.zendesk.sdk.model.request.CreateRequest;
-import com.zendesk.sdk.model.request.CustomField;
-import com.zendesk.sdk.network.RequestProvider;
-import com.zendesk.sdk.network.impl.ZendeskConfig;
 import com.zendesk.service.ErrorResponse;
 import com.zendesk.service.ZendeskCallback;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import zendesk.support.CreateRequest;
+import zendesk.support.CustomField;
+import zendesk.support.Request;
+import zendesk.support.RequestProvider;
+import zendesk.support.Support;
 
 public class CustomFieldsActivity extends AppCompatActivity {
 
@@ -47,13 +49,13 @@ public class CustomFieldsActivity extends AppCompatActivity {
                 progressDialog = ProgressDialog.show(CustomFieldsActivity.this, "Sending Request", "Aligning 1s and 0s...", true, false);
 
                 // Get an instance of the RequestProvider from the ZendeskConfig
-                RequestProvider provider = ZendeskConfig.INSTANCE.provider().requestProvider();
+                RequestProvider provider = Support.INSTANCE.provider().requestProvider();
 
                 // Build your CreateRequest object, which includes the custom field data
                 CreateRequest request = buildCreateRequest();
 
                 // Optionally, create a ZendeskCallback. This can be null.
-                ZendeskCallback<CreateRequest> callback = buildCallback();
+                ZendeskCallback<Request> callback = buildCallback();
 
                 // Call the provider method
                 provider.createRequest(request, callback);
@@ -66,12 +68,12 @@ public class CustomFieldsActivity extends AppCompatActivity {
         CreateRequest request = new CreateRequest();
 
         // Set any details on it you want
+        // request.setTicketFormId("formID");
         request.setSubject("Test Custom Fields Ticket");
         request.setDescription("We should see custom fields on this ticket!");
 
         // Build CustomField objects as desired, using the Custom Field IDs from your Zendesk dashboard.
         request.setCustomFields(buildCustomFieldsList());
-
         return request;
     }
 
@@ -87,11 +89,11 @@ public class CustomFieldsActivity extends AppCompatActivity {
         return list;
     }
 
-    private ZendeskCallback<CreateRequest> buildCallback() {
+    private ZendeskCallback<Request> buildCallback() {
         // Build the optional callback to handle success/error
-      return new ZendeskCallback<CreateRequest>() {
+      return new ZendeskCallback<Request>() {
           @Override
-          public void onSuccess(CreateRequest createRequest) {
+          public void onSuccess(Request createRequest) {
               progressDialog.dismiss();
               Log.d(TAG, "onSuccess: Ticket created!");
               Toast.makeText(getApplicationContext(), "Success! Ticket created!", Toast.LENGTH_SHORT).show();
@@ -107,10 +109,10 @@ public class CustomFieldsActivity extends AppCompatActivity {
     }
 
     private void captureViews() {
-        customInput1 = (EditText) findViewById(R.id.customInput1);
-        customInput2 = (EditText) findViewById(R.id.customInput2);
-        customInput3 = (EditText) findViewById(R.id.customInput3);
-        customInput4 = (EditText) findViewById(R.id.customInput4);
-        submitButton = (Button) findViewById(R.id.btnSubmit);
+        customInput1 = findViewById(R.id.customInput1);
+        customInput2 = findViewById(R.id.customInput2);
+        customInput3 = findViewById(R.id.customInput3);
+        customInput4 = findViewById(R.id.customInput4);
+        submitButton = findViewById(R.id.btnSubmit);
     }
 }
