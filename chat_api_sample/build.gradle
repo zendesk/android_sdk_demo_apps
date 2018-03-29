@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.zopim.sample.chatapi"
@@ -32,11 +31,11 @@ ext {
 }
 
 dependencies {
-    compile group: 'com.zopim.android', name: 'sdk-api', version: rootProject.ext.zopimSdkVersion
+    implementation group: 'com.zopim.android', name: 'sdk-api', version: rootProject.ext.zopimSdkVersion
 
-    compile group: 'com.android.support', name: 'appcompat-v7', version: rootProject.ext.appCompatVersion
-    compile group: 'com.android.support', name: 'design', version: rootProject.ext.appCompatVersion
-    compile group: 'com.android.support', name: 'recyclerview-v7', version: rootProject.ext.appCompatVersion
+    implementation group: 'com.android.support', name: 'appcompat-v7', version: rootProject.ext.appCompatVersion
+    implementation group: 'com.android.support', name: 'design', version: rootProject.ext.appCompatVersion
+    implementation group: 'com.android.support', name: 'recyclerview-v7', version: rootProject.ext.appCompatVersion
 
-    compile group: 'com.squareup.picasso', name: 'picasso', version: project.ext.picassoVersion
+    implementation group: 'com.squareup.picasso', name: 'picasso', version: project.ext.picassoVersion
 }

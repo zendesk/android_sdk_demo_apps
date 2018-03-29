@@ -9,13 +9,13 @@ import android.support.annotation.Nullable;
 import com.urbanairship.AirshipReceiver;
 import com.urbanairship.push.PushMessage;
 import com.zendesk.logger.Logger;
-import com.zendesk.sdk.deeplinking.ZendeskDeepLinking;
-import com.zendesk.sdk.network.impl.ZendeskConfig;
 import com.zendesk.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Locale;
+
+import zendesk.core.Zendesk;
+import zendesk.support.Support;
+import zendesk.support.request.RequestActivity;
 
 public class IntentReceiver extends AirshipReceiver {
 
@@ -29,16 +29,16 @@ public class IntentReceiver extends AirshipReceiver {
         final String tid = message.getPushBundle().getString("tid");
 
         // Check if ticket id is valid
-        if(!StringUtils.hasLength(tid)){
+        if (!StringUtils.hasLength(tid)) {
             Logger.e(LOG_TAG, String.format(Locale.US, "No valid ticket id found: '%s'", tid));
             return;
         }
 
         // Try to refresh the comment stream if visible
-        final boolean refreshed = ZendeskDeepLinking.INSTANCE.refreshComments(tid);
+        final boolean refreshed = Support.INSTANCE.refreshRequest(tid, context);
 
         // If stream was successfully refreshed, we can cancel the notification
-        if(refreshed){
+        if (refreshed) {
             final NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             nm.cancel(notificationInfo.getNotificationId());
         }
@@ -49,11 +49,11 @@ public class IntentReceiver extends AirshipReceiver {
     protected boolean onNotificationOpened(@NonNull Context context, @NonNull NotificationInfo notificationInfo) {
         // Return false here to allow Urban Airship to auto launch the launcher activity
 
-                // Extract ticket id
+        // Extract ticket id
         final String tid = notificationInfo.getMessage().getPushBundle().getString("tid");
 
         // Check if ticket id is valid
-        if(!StringUtils.hasLength(tid)){
+        if (!StringUtils.hasLength(tid)) {
             Logger.e(LOG_TAG, String.format(Locale.US, "No valid ticket id found: '%s'", tid));
             return false;
         }
@@ -64,7 +64,7 @@ public class IntentReceiver extends AirshipReceiver {
         final Intent zendeskDeepLinkIntent = getZendeskDeepLinkIntent(context.getApplicationContext(), tid);
 
         // Check if Intent is valid
-        if(zendeskDeepLinkIntent == null){
+        if (zendeskDeepLinkIntent == null) {
             Logger.e(LOG_TAG, "Error zendeskDeepLinkIntent is 'null'");
             return false;
         }
@@ -76,24 +76,22 @@ public class IntentReceiver extends AirshipReceiver {
     }
 
     @Nullable
-    private Intent getZendeskDeepLinkIntent(Context context, String ticketId){
+    private Intent getZendeskDeepLinkIntent(Context context, String ticketId) {
 
         // Make sure that Zendesk is initialized
-        if(!ZendeskConfig.INSTANCE.isInitialized()) {
-            ZendeskConfig.INSTANCE.init(
-                context,
-                context.getString(R.string.zd_url),
-                context.getString(R.string.zd_appid),
-                context.getString(R.string.zd_oauth)
+        if (!Zendesk.INSTANCE.isInitialized()) {
+            Zendesk.INSTANCE.init(
+                    context,
+                    context.getString(R.string.zd_url),
+                    context.getString(R.string.zd_appid),
+                    context.getString(R.string.zd_oauth)
             );
+            Support.INSTANCE.init(Zendesk.INSTANCE);
         }
 
         // Initialize a back stack
         final Intent mainActivity = new Intent(context, MainActivity.class);
-        final ArrayList<Intent> backStack = new ArrayList<>(Arrays.asList(mainActivity));
 
-        return ZendeskDeepLinking.INSTANCE.getRequestIntent(
-                context, ticketId, null, backStack, mainActivity
-        );
+        return RequestActivity.builder().withRequestId(ticketId).deepLinkIntent(context, mainActivity);
     }
 }

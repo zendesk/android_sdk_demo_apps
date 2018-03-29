@@ -2,45 +2,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <string name="app_name">SDK Sample</string>
-    <string name="main_btn_rate_my_app">Rate my app</string>
     <string name="main_btn_contact">Contact Zendesk</string>
     <string name="main_btn_request_list">Ticket List</string>
-    <string name="contact_fragment_title">Contact Zendesk</string>
-    <string name="title_activity_network_test">NetworkTestActivity</string>
-    <string name="title_activity_flat_articles">Flat article list</string>
     <string name="main_btn_helpcenter">Support</string>
-    <string name="subdomain_label">Enter your Zendesk URL like \'mysubdomain\' or an ip address like: \'http://192.168.1.10:80\'</string>
-    <string name="label_ok">OK</string>
-    <string name="appid_label">Application ID</string>
-    <string name="clientid_label">Client ID</string>
-    <string name="jwt_useridentifer_label">JWT User Identifier, based on your server side configuration</string>
-    <string name="anon_name_label">Optional name of the end-user</string>
-    <string name="anon_email_label">Optional email of the end user</string>
-    <string name="anon_external_id_label">Optional external ID of the end user</string>
-    <string name="activity_entry_menu_clear">Clear</string>
     <string name="main_edittext_support_hint">label1,label2 or [category_id] (optional)</string>
-    <string name="activity_entry_jwt">JWT</string>
-    <string name="activity_extra_anonymous">Anonymous</string>
-    
-    <string name="intent_import_settings_host">importsettings</string>
-    <string name="intent_import_settings_scheme">zdimport</string>
 
     <string name="main_edittext_push_hint">Push device token</string>
     <string name="main_btn_push_register">Register Push</string>
     <string name="main_btn_push_register_ua">Register Push UA</string>
     <string name="main_btn_push_unregister">Unregister Push</string>
-    <string name="activity_entry_menu_barcode">Barcode</string>
 
     <string name="main_edittext_tags">User tags</string>
     <string name="main_btn_add_tags">Add tags</string>
     <string name="main_btn_remove_tags">Remove tags</string>
-    <string name="main_status_success">success</string>
-    <string name="main_status_waiting">waiting</string>
-    <string name="main_btn_clear_storage">Clear sdk settings</string>
-
-
-    <string name="zendesk_url">replace_me_with_zendesk_url</string>
-    <string name="applicationId">replace_me_with_application_id</string>
-    <string name="oauthClientId">replace_me_with_oauth_client_id</string>
-
 </resources>

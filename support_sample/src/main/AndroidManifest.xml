@@ -3,15 +3,6 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.zendesk.sample" >
 
-    <!--Enable the following permission if you wish to have auto complete of email address in Contact UI-->
-    <!--<uses-permission android:name="android.permission.GET_ACCOUNTS" />-->
-
-    <!--
-        Enable the following permission if you wish to allow the SDK to determine whether global sync
-        is enabled or not to be kinder to the battery
-    -->
-    <!--<uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />-->
-
     <application
         android:name=".Global"
         android:allowBackup="true"
@@ -26,17 +17,10 @@
             android:label="@string/app_name" >
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="@string/intent_import_settings_host"
-                    android:scheme="@string/intent_import_settings_scheme" />
-
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
     </application>

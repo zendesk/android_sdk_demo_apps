@@ -1,24 +1,28 @@
 sudo: required
-dist: precise
+dist: trusty
 language: android
-
+group: edge
 jdk:
-  - oraclejdk8
-
+- oraclejdk8
+before_cache:
+- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+cache:
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 android:
   components:
-    - tools
-    - platform-tools
-    - android-25
-    - build-tools-25.0.2
-    - extra-android-m2repository
-    - extra-google-m2repository
+  - tools
+  - android-27
+  - platform-tools
+  - build-tools-27.0.3
+  - extra-android-m2repository
   licenses:
-    - android-sdk-license-[0-9a-f]{8}
-
+   - 'android-sdk-preview-license-.+'
+   - 'android-sdk-license-.+'
+   - '.+'
 branches:
   only:
     - master
-
 script:
   - ./scripts/shell/travis.sh

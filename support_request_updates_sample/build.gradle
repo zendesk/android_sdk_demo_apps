@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId rootProject.ext.applicationId + ".support"
@@ -20,5 +19,5 @@ android {
 }
 
 dependencies {
-    compile group: 'com.zendesk', name: 'sdk', version: rootProject.ext.zendeskSdkVersion
+    implementation group: 'com.zendesk', name: 'support', version: rootProject.ext.zendeskSdkVersion
 }

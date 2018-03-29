@@ -2,16 +2,9 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="ZendeskSdkTheme.Light.DarkActionBar">
-
         <item name="colorPrimary">@color/zendesk_color_primary</item>
         <item name="colorPrimaryDark">@color/zendesk_color_primary_dark</item>
         <item name="colorAccent">@color/zendesk_color_accent</item>
-
-        <item name="android:textAppearance">@style/grey_text</item>
-    </style>
-
-    <style name="grey_text" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/zendesk_grey_text</item>
     </style>
 
 </resources>
