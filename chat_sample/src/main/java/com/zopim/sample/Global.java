@@ -28,9 +28,6 @@ public class Global extends Application {
             throw new IllegalStateException("No Account Key defined");
         }
 
-        // Initialise Firebase app to receive push notifications
-        FirebasePushSetup.initPush(this);
-
         // Sample breadcrumb
         ZopimChat.trackEvent("Application created");
 
