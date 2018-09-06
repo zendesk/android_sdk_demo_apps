@@ -38,4 +38,8 @@ dependencies {
     implementation group: 'com.android.support', name: 'recyclerview-v7', version: rootProject.ext.appCompatVersion
 
     implementation group: 'com.squareup.picasso', name: 'picasso', version: project.ext.picassoVersion
+
+    implementation ('com.google.firebase:firebase-messaging:17.0.0') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
 }

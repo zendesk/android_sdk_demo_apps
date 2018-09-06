@@ -7,7 +7,6 @@ import com.zendesk.logger.Logger;
 import com.zendesk.util.StringUtils;
 import com.zopim.android.sdk.api.ZopimChat;
 import com.zopim.android.sdk.model.VisitorInfo;
-import com.zopim.android.sdk.prechat.PreChatForm;
 
 public class Global extends Application {
 
@@ -28,6 +27,9 @@ public class Global extends Application {
         if (StringUtils.isEmpty(ACCOUNT_KEY)) {
             throw new IllegalStateException("No Account Key defined");
         }
+
+        // Initialise Firebase app to receive push notifications
+        FirebasePushSetup.initPush(this);
 
         // Sample breadcrumb
         ZopimChat.trackEvent("Application created");
