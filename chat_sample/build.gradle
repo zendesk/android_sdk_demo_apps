@@ -20,4 +20,8 @@ android {
 
 dependencies {
     implementation group: 'com.zopim.android', name: 'sdk', version: rootProject.ext.zopimSdkVersion
+
+    implementation ('com.google.firebase:firebase-messaging:17.0.0') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
 }
