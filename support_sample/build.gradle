@@ -25,5 +25,5 @@ android {
 }
 
 dependencies {
-    implementation group: 'com.zendesk', name: 'support', version: rootProject.ext.zendeskSdkVersion
+    api group: 'com.zendesk', name: 'support', version: rootProject.ext.zendeskSdkVersion
 }
