@@ -28,9 +28,6 @@ public class Global extends Application {
             throw new IllegalStateException("No Account Key defined");
         }
 
-        // Initialise Firebase app to receive push notifications
-        FirebasePushSetup.initPush(this);
-
         // Sample breadcrumb
         ZopimChat.trackEvent("Application created");
 
@@ -70,6 +67,9 @@ public class Global extends Application {
 //
 //            ZopimChat.setVisitorInfo(visitorData);
         }
+
+        // Initialise Firebase app to receive push notifications
+        FirebasePushSetup.initPush(this);
 
         // clear visitor info. Visitor info storage can be disabled at chat initialization
         VisitorInfo emptyVisitorInfo = new VisitorInfo.Builder().build();
