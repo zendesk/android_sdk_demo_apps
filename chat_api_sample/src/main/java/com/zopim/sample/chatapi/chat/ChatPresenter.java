@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Bridge code between {@link ChatPresenter} and {@link ChatView}.
+ * Bridge code between {@link ChatModel} and {@link ChatView}.
  */
 class ChatPresenter implements ChatMvp.Presenter {
 
