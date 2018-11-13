@@ -25,6 +25,8 @@ public class Global extends Application {
     private final static String API_KEY = ""; // Firebase console -> Project settings -> Cloud messaging -> Server Key
     private final static String FCM_SENDER_ID = ""; // Firebase console -> Project settings -> Cloud messaging -> Sender ID
 
+    private static boolean missingCredentials = false;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -33,7 +35,8 @@ public class Global extends Application {
         Logger.setLoggable(true);
 
         if (StringUtils.isEmpty(ACCOUNT_KEY)) {
-            throw new IllegalStateException("No Account Key defined");
+            missingCredentials = true;
+            return;
         }
 
         // Sample breadcrumb
@@ -77,9 +80,18 @@ public class Global extends Application {
         }
 
         // Initialise Firebase app to receive push notifications
+        initFirebase();
+
+        // clear visitor info. Visitor info storage can be disabled at chat initialization
+        VisitorInfo emptyVisitorInfo = new VisitorInfo.Builder().build();
+        ZopimChat.setVisitorInfo(emptyVisitorInfo);
+        Log.v("Zopim Chat Sample", "Visitor info erased.");
+    }
+
+    private void initFirebase() {
         if (PROJECT_ID.isEmpty() || API_KEY.isEmpty() || FCM_SENDER_ID.isEmpty()) {
-            throw new RuntimeException("To use push in the sample app you must configure " +
-                    "the credentials");
+            missingCredentials = true;
+            return;
         }
 
         FirebaseOptions options = new FirebaseOptions.Builder()
@@ -99,10 +111,9 @@ public class Global extends Application {
         } catch (IllegalStateException e) {
             Log.d(LOG_TAG, "Error requesting FCM token");
         }
+    }
 
-        // clear visitor info. Visitor info storage can be disabled at chat initialization
-        VisitorInfo emptyVisitorInfo = new VisitorInfo.Builder().build();
-        ZopimChat.setVisitorInfo(emptyVisitorInfo);
-        Log.v("Zopim Chat Sample", "Visitor info erased.");
+    static boolean isMissingCredentials() {
+        return missingCredentials;
     }
 }

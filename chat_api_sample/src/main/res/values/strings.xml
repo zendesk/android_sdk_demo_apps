@@ -4,5 +4,6 @@
     <string name="snackbar_connection">No connection</string>
     <string name="snackbar_timeout">Timeout</string>
     <string name="chat_input_hint">Write a message</string>
+    <string name="missing_credentials">You must provide a Chat API key for this demo to function\n\nValid Firebase credentials are required for push notifications to be displayed</string>
 
 </resources>

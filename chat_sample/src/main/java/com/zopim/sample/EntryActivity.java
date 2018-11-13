@@ -18,6 +18,10 @@ public class EntryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Global.isMissingCredentials()) {
+            setContentView(R.layout.missing_credentials);
+            return;
+        }
         setContentView(R.layout.entry_activity);
     }
 
