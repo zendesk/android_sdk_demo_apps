@@ -11,7 +11,11 @@ import io.outbound.sdk.PushNotification;
 
 /**
  * You can optionally extend {@link OutboundMessagingService} to handle building
- * notifications yourself, or handle events like message received or notification displayed.
+ * notifications yourself, or handle events like message received or notification
+ * displayed. This service must be registered in your manifest.
+ *
+ * If you don't want to handle push notifications yourself you can leave out this
+ * class and register {@link OutboundMessagingService} in your manifest.
  */
 public class SampleMessagingService extends OutboundMessagingService {
 

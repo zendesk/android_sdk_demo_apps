@@ -9,8 +9,12 @@ import io.outbound.sdk.OutboundService;
 import io.outbound.sdk.PushNotification;
 
 /**
- * You can optionally extend {@link OutboundService} to handle what happens when a user
- * taps on a push notification delivered by Connect.
+ * You can optionally extend {@link OutboundService} to handle what happens when
+ * a user taps on a push notification delivered by Connect. This service must be
+ * registered in your manifest.
+ *
+ * If you don't want to handle push actions yourself then you can leave out this
+ * class and register {@link OutboundService} in your manifest.
  */
 public class SampleNotificationService extends OutboundService {
 
