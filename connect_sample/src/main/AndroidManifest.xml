@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.zendesk.sample.connect">
+
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".Global"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <provider android:authorities="${applicationId}.firebaseinitprovider"
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:exported="false"
+            tools:node="remove"/>
+
+        <activity android:name="com.zendesk.sample.connect.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- This is the default service for handling incoming push notifications -->
+        <!-- Use this if you want the SDK to handle displaying the notifications -->
+        <!--<service android:name="io.outbound.sdk.OutboundMessagingService"
+            android:exported="false">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
+            <!--</intent-filter>-->
+        <!--</service>-->
+
+        <!-- This is a sample service for handling incoming push notifications -->
+        <!-- Use this if you want to handle displaying the notifications yourself -->
+        <service android:name=".SampleMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <!-- This is the default service for handling push actions -->
+        <!-- User this if you want the SDK to handle push actions -->
+        <!--<service android:name="io.outbound.sdk.OutboundService"
+            android:exported="false">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.zendesk.sample.connect.outbound.action.OPEN_NOTIF"/>-->
+            <!--</intent-filter>-->
+        <!--</service>-->
+
+        <!-- This is a sample service for handling push actions -->
+        <!-- User this if you want to handle push actions yourself -->
+        <service
+            android:name=".SampleNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.zendesk.sample.connect.outbound.action.OPEN_NOTIF" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zendesk.sample.connect.MainActivity">
+
+    <Button
+        android:id="@+id/identify_user_button"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="100dp"
+        android:text="@string/identify_user"/>
+
+    <Button
+        android:id="@+id/track_event_button"
+        style="@style/ButtonStyle"
+        android:layout_below="@id/identify_user_button"
+        android:text="@string/track_event"/>
+
+    <Button
+        android:id="@+id/push_register_button"
+        style="@style/ButtonStyle"
+        android:layout_below="@id/track_event_button"
+        android:text="@string/register_for_push"/>
+
+    <Button
+        android:id="@+id/push_disable_button"
+        style="@style/ButtonStyle"
+        android:layout_below="@id/push_register_button"
+        android:text="@string/disable_push"/>
+
+    <Button
+        android:id="@+id/logout_button"
+        style="@style/ButtonStyle"
+        android:layout_below="@id/push_disable_button"
+        android:text="@string/logout"/>
+
+</RelativeLayout>

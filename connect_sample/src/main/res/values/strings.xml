@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Connect Sample</string>
+    <string name="identify_user">Identify User</string>
+    <string name="track_event">Track Event</string>
+    <string name="register_for_push">Register for push</string>
+    <string name="disable_push">Disable push</string>
+    <string name="logout">Logout</string>
+</resources>
