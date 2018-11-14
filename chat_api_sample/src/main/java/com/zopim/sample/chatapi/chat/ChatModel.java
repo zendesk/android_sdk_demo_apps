@@ -20,7 +20,7 @@ import java.lang.ref.WeakReference;
 import java.util.TreeMap;
 
 /**
- * 
+ * Model class that's responsible for interacting with Zendesk Chat API.
  */
 class ChatModel implements ChatMvp.Model {
 
@@ -31,6 +31,8 @@ class ChatModel implements ChatMvp.Model {
     private Handler mainHandler;
 
     private WeakReference<ChatListener> chatListener;
+    private ChatItemsObserver chatItemsObserver;
+    private ConnectionObserver connectionObserver;
 
     ChatModel(ChatApi chatApi, DataSource dataSource, Context context) {
         this.chatApi = chatApi;
@@ -73,7 +75,15 @@ class ChatModel implements ChatMvp.Model {
     }
 
     private void unbindChatListener() {
-        dataSource.deleteObservers();
+        if (chatItemsObserver != null) {
+            dataSource.deleteChatLogObserver(chatItemsObserver);
+            chatItemsObserver = null;
+        }
+
+        if (connectionObserver != null) {
+            dataSource.deleteConnectionObserver(connectionObserver);
+            connectionObserver = null;
+        }
 
         if (timeoutReceiver != null) {
             context.unregisterReceiver(timeoutReceiver);
@@ -82,7 +92,7 @@ class ChatModel implements ChatMvp.Model {
     }
 
     private void bindChatListener() {
-        dataSource.addChatLogObserver(new ChatItemsObserver(context) {
+        chatItemsObserver = new ChatItemsObserver(context) {
             @Override
             protected void updateChatItems(final TreeMap<String, RowItem> treeMap) {
                 updateChatListener(new UpdateChatLogListener() {
@@ -92,9 +102,8 @@ class ChatModel implements ChatMvp.Model {
                     }
                 });
             }
-        }).trigger();
-
-        dataSource.addConnectionObserver(new ConnectionObserver() {
+        };
+        connectionObserver = new ConnectionObserver() {
             @Override
             public void update(final Connection connection) {
                 updateChatListener(new UpdateChatLogListener() {
@@ -104,8 +113,7 @@ class ChatModel implements ChatMvp.Model {
                     }
                 });
             }
-        }).trigger();
-
+        };
         timeoutReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(final Context context, final Intent intent) {
@@ -120,6 +128,8 @@ class ChatModel implements ChatMvp.Model {
             }
         };
 
+        dataSource.addChatLogObserver(chatItemsObserver).trigger();
+        dataSource.addConnectionObserver(connectionObserver).trigger();
         context.registerReceiver(timeoutReceiver, new IntentFilter(ChatSession.ACTION_CHAT_SESSION_TIMEOUT));
     }
 
