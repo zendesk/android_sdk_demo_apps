@@ -76,22 +76,8 @@ public class ChatLogView extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     @Override
-    public void notifyInserted(final List<Integer> index) {
-        for (Integer i : index) {
-            notifyItemInserted(i);
-        }
-    }
-
-    @Override
     public void scrollToLastMessage() {
         recyclerViewLayoutManager.scrollToPosition(getItemCount() - 1);
-    }
-
-    @Override
-    public void notifyUpdated(final List<Integer> index) {
-        for (Integer i : index) {
-            notifyItemChanged(i);
-        }
     }
 
     @Override

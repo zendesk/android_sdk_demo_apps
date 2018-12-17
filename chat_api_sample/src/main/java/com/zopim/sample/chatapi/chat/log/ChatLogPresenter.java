@@ -32,24 +32,9 @@ public class ChatLogPresenter implements ChatLogMvp.Presenter {
 
     @Override
     public void updateChatLog(final Map<String, RowItem> chatItemMap) {
-
-        final ChatLogUpdateResult chatLogUpdateResult = model.updateChatLog(chatItemMap);
-
-        if (chatLogUpdateResult.isUnableToDoIncrementalUpdate()) {
-            view.refreshWholeList();
-            view.scrollToLastMessage();
-
-        } else {
-
-            if (CollectionUtils.isNotEmpty(chatLogUpdateResult.getInsertedIndex())) {
-                view.notifyInserted(chatLogUpdateResult.getInsertedIndex());
-                view.scrollToLastMessage();
-            }
-
-            if (CollectionUtils.isNotEmpty(chatLogUpdateResult.getUpdatedIndex())) {
-                view.notifyUpdated(chatLogUpdateResult.getUpdatedIndex());
-            }
-        }
+        model.updateChatLog(chatItemMap);
+        view.refreshWholeList();
+        view.scrollToLastMessage();
     }
 
 }

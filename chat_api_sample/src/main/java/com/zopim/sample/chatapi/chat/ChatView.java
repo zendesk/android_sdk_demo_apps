@@ -169,12 +169,7 @@ class ChatView implements ChatMvp.View {
     private void initChatLogRecycler() {
         final RecyclerView recyclerView = views.chatRecycler;
 
-        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context) {
-            @Override
-            public boolean supportsPredictiveItemAnimations() {
-                return false;
-            }
-        };
+        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
 
         final ChatLogView chatLogAdapter = new ChatLogView(layoutManager); // view

@@ -19,10 +19,6 @@ public interface ChatLogMvp {
 
     interface View {
 
-        void notifyInserted(List<Integer> index);
-
-        void notifyUpdated(List<Integer> index);
-
         void refreshWholeList();
 
         <E extends ChatLogMvp.Presenter> void setPresenter(E presenter);
@@ -36,7 +32,7 @@ public interface ChatLogMvp {
 
         int getItemCount();
 
-        ChatLogUpdateResult updateChatLog(Map<String, RowItem> chatItemMap);
+        void updateChatLog(Map<String, RowItem> chatItemMap);
     }
 
 }
