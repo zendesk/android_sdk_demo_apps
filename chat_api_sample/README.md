@@ -2,11 +2,11 @@
 
 # Chat SDK API demo
 
-Chat SDK API demo is a Sndroid project that shows how easy it is to create your own chat UI that is backed by Zendesk Chat API.
-This demo uses Chat SDK Version 1.3.0.1. You can reference Chat API as a Gradle dependency:
+Chat SDK API demo is an Android project which shows how easy it is to create your own chat UI that is backed by Zendesk Chat API.
+This demo uses Chat SDK Version 1.4.2. You can reference Chat API as a Gradle dependency:
 
 ````
-compile group: 'com.zopim.android', name: 'sdk-api', version: '1.3.0.1'
+compile group: 'com.zopim.android', name: 'sdk-api', version: '1.4.2'
 ````
 
 ![Image](https://cloud.githubusercontent.com/assets/10401580/16982218/a14cc03c-4e66-11e6-8463-ee613432d80b.png)
