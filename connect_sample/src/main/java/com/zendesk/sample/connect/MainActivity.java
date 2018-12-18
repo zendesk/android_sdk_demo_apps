@@ -5,11 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.zendesk.connect.Connect;
+import com.zendesk.connect.Event;
+import com.zendesk.connect.EventFactory;
+import com.zendesk.connect.User;
+import com.zendesk.connect.UserBuilder;
 import com.zendesk.logger.Logger;
-
-import io.outbound.sdk.Event;
-import io.outbound.sdk.Outbound;
-import io.outbound.sdk.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,13 +24,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sampleUser = new User.Builder()
-                .setUserId("Y_E_E_e_e_s")
+        sampleUser = new UserBuilder("Y_E_E_e_e_s")
                 .setFirstName("Steven")
                 .setLastName("Toast")
                 .build();
 
-        sampleEvent = new Event("Sample Event");
+        sampleEvent = EventFactory.createEvent("Sample Event");
 
         findViewById(R.id.identify_user_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void identifyUser(User user) {
         Logger.d(LOG_TAG, "Identifying user");
-        Outbound.identify(user);
+        Connect.INSTANCE.identifyUser(user);
     }
 
     /**
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void trackEvent(Event event) {
         Logger.d(LOG_TAG, "Tracking event");
-        Outbound.track(event);
+        Connect.INSTANCE.trackEvent(event);
     }
 
     /**
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void registerForPush() {
         Logger.d(LOG_TAG, "Registering user for push");
-        Outbound.register();
+        Connect.INSTANCE.registerForPush();
     }
 
     /**
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void disablePush() {
         Logger.d(LOG_TAG, "Disabling push for user");
-        Outbound.disable();
+        Connect.INSTANCE.disablePush();
     }
 
     /**
@@ -106,6 +106,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private void logout() {
         Logger.d(LOG_TAG, "Logging out user");
-        Outbound.logout();
+        Connect.INSTANCE.logoutUser();
     }
 }
