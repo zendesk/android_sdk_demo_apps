@@ -8,6 +8,7 @@ ext {
     zendeskSdkVersion = "2.2.1"
     zopimSdkVersion = "1.4.1"
     appCompatVersion = "27.1.0"
+    connectSdkVersion = "2.0.0"
 }
 
 buildscript {

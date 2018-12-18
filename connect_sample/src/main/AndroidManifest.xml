@@ -31,8 +31,8 @@
 
         <!-- This is the default service for handling incoming push notifications -->
         <!-- Use this if you want the SDK to handle displaying the notifications -->
-        <!--<service android:name="io.outbound.sdk.OutboundMessagingService"
-            android:exported="false">-->
+        <!--<service android:name="com.zendesk.connect.ConnectMessagingService"-->
+            <!--android:exported="false">-->
             <!--<intent-filter>-->
                 <!--<action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
             <!--</intent-filter>-->
@@ -49,20 +49,20 @@
 
         <!-- This is the default service for handling push actions -->
         <!-- User this if you want the SDK to handle push actions -->
-        <!--<service android:name="io.outbound.sdk.OutboundService"
-            android:exported="false">-->
+        <!--<service android:name="com.zendesk.connect.ConnectActionService"-->
+            <!--android:exported="false">-->
             <!--<intent-filter>-->
-                <!--<action android:name="com.zendesk.sample.connect.outbound.action.OPEN_NOTIF"/>-->
+                <!--<action android:name="com.zendesk.sample.connect.connect.action.OPEN_NOTIF"/>-->
             <!--</intent-filter>-->
         <!--</service>-->
 
         <!-- This is a sample service for handling push actions -->
         <!-- User this if you want to handle push actions yourself -->
         <service
-            android:name=".SampleNotificationService"
+            android:name=".SampleActionService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.zendesk.sample.connect.outbound.action.OPEN_NOTIF" />
+                <action android:name="com.zendesk.sample.connect.connect.action.OPEN_NOTIF" />
             </intent-filter>
         </service>
 
