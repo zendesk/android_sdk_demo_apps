@@ -2,11 +2,11 @@
 
 ext {
     applicationId = "com.zendesk.sample"
-    compileSdkVersion = 27
+    compileSdkVersion = 28
     minSdkVersion = 16
-    targetSdkVersion = 27
+    targetSdkVersion = 28
     zendeskSdkVersion = "2.2.1"
-    zopimSdkVersion = "1.4.1"
+    zopimSdkVersion = "1.4.2"
     appCompatVersion = "27.1.0"
     connectSdkVersion = "2.0.0"
 }

@@ -36,18 +36,12 @@ public class ChatLogModel implements ChatLogMvp.Model {
     }
 
     @Override
-    public ChatLogUpdateResult updateChatLog(final Map<String, RowItem> chatItemMap) {
+    public void updateChatLog(final Map<String, RowItem> chatItemMap) {
         final List<ViewHolderWrapper> viewHolderWrappers = new ArrayList<>(listItems);
         final List<ViewHolderWrapper> updateHolderWrapper = new ArrayList<>();
 
-        final List<Integer> updatedViewIndices = new ArrayList<>();
-        final List<Integer> insertedIndices = new ArrayList<>();
-
-        boolean unableToDoIncrementalUpdate = false;
-
         if (ItemFactory.countUsedMessages(chatItemMap.values()) < viewHolderWrappers.size()) {
             viewHolderWrappers.clear();
-            unableToDoIncrementalUpdate = true;
         }
 
         for (Map.Entry<String, RowItem> entry : chatItemMap.entrySet()) {
@@ -59,11 +53,6 @@ public class ChatLogModel implements ChatLogMvp.Model {
 
                 if (wrapper != null) {
                     updateHolderWrapper.add(wrapper);
-                    updatedViewIndices.add(updateHolderWrapper.size() - 1);
-                } else {
-                    // Not able to update item, remove from list
-                    // we have to update the whole list
-                    unableToDoIncrementalUpdate = true;
                 }
 
             } else if (holderById != null) {
@@ -75,19 +64,12 @@ public class ChatLogModel implements ChatLogMvp.Model {
                 final ViewHolderWrapper wrapper = ItemFactory.get(entry.getKey(), entry.getValue(), dataSource.getAgents());
                 if (wrapper != null) {
                     updateHolderWrapper.add(wrapper);
-                    insertedIndices.add(updateHolderWrapper.size() - 1);
                 }
             }
         }
 
         listItems.clear();
         listItems.addAll(updateHolderWrapper);
-
-        if (unableToDoIncrementalUpdate) {
-            return ChatLogUpdateResult.create();
-        } else {
-            return ChatLogUpdateResult.create(updatedViewIndices, insertedIndices);
-        }
     }
 
     private ViewHolderWrapper findHolderById(List<ViewHolderWrapper> list, String id) {
