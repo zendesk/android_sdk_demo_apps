@@ -11,6 +11,12 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
+
+        <provider android:authorities="${applicationId}.firebaseinitprovider"
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:exported="false"
+            tools:node="remove"/>
+
         <activity
             android:name=".EntryActivity"
             android:label="@string/app_name"
