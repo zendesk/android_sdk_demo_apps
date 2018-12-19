@@ -30,4 +30,6 @@ dependencies {
     implementation ('com.google.firebase:firebase-messaging:17.1.0') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
+
+    implementation project(":demo_apps_commons")
 }

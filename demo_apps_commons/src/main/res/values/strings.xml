@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Demo Apps Commons</string>
+    <string name="missing_credentials">Failed to provide valid credentials for this demo app</string>
+</resources>
