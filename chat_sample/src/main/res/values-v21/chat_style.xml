@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Customize toolbar that replaces action bar-->
+    <style name="zopim_toolbar" parent="_zopim_toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextAppearance">@style/toolbar_title_text</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+</resources>

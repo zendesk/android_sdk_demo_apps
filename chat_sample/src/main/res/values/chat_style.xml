@@ -15,6 +15,12 @@
         <item name="android:minHeight">?attr/actionBarSize</item>
         <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextAppearance">@style/toolbar_title_text</item>
+    </style>
+
+    <style name="toolbar_title_text">
+        <!-- We need to hide the original toolbar title -->
+        <item name="android:textSize">0sp</item>
     </style>
 
     <!--Customize not agents button-->
