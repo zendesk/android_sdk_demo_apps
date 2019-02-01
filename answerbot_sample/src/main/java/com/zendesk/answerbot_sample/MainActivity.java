@@ -16,6 +16,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        if (Global.isMissingCredentials()) {
+            setContentView(R.layout.missing_credentials);
+            return;
+        }
         AnswerBotActivity.builder().show(this);
     }
 }

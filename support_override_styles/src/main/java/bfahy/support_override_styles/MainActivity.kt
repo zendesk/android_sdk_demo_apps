@@ -10,6 +10,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (Global.isMissingCredentials()) {
+            setContentView(R.layout.missing_credentials)
+            return
+        }
         setContentView(R.layout.activity_main)
 
         helpCenterBtn.setOnClickListener {

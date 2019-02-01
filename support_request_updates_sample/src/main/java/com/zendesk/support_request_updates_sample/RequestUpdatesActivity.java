@@ -24,6 +24,10 @@ public class RequestUpdatesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Global.isMissingCredentials()) {
+            setContentView(R.layout.missing_credentials);
+            return;
+        }
         setContentView(R.layout.activity_request_updates);
 
         ticketListButton = findViewById(R.id.ticket_list_button);

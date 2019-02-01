@@ -57,6 +57,10 @@ public class UploadAttachmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Global.isMissingCredentials()) {
+            setContentView(R.layout.missing_credentials);
+            return;
+        }
         setContentView(R.layout.activity_upload_attachment);
 
         // Initialize the Zendesk Providers used to upload files and submit requests.

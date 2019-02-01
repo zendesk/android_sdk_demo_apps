@@ -37,6 +37,10 @@ public class CustomFieldsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Global.isMissingCredentials()) {
+            setContentView(R.layout.missing_credentials);
+            return;
+        }
         setContentView(R.layout.activity_main);
 
         // Uninteresting method of findViewById calls

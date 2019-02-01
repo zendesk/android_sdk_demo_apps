@@ -15,4 +15,6 @@
     <string name="main_edittext_tags">User tags</string>
     <string name="main_btn_add_tags">Add tags</string>
     <string name="main_btn_remove_tags">Remove tags</string>
+
+    <string name="missing_credentials">You must provide a valid Zendesk subdomain url, application id, and oauth client id for this demo to function</string>
 </resources>
