@@ -13,5 +13,6 @@
     <string name="hint_account_key">Update account key</string>
     <string name="error_account_key">please enter the account key</string>
     <string name="account_key_confirm">Chat reinitialized with new account key</string>
+    <string name="missing_credentials">You must provide a Chat API key for this demo to function\n\nValid Firebase credentials are required for push notifications to be displayed</string>
 
 </resources>

@@ -20,4 +20,6 @@ android {
 
 dependencies {
     implementation group: 'com.zendesk', name: 'support', version: rootProject.ext.zendeskSdkVersion
+
+    implementation project(":demo_apps_commons")
 }

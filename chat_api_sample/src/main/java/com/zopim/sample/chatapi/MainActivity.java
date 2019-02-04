@@ -14,6 +14,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Global.isMissingCredentials()) {
+            setContentView(R.layout.missing_credentials);
+            return;
+        }
 
         final ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {

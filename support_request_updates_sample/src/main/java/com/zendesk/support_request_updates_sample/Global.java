@@ -3,6 +3,7 @@ package com.zendesk.support_request_updates_sample;
 import android.app.Application;
 
 import com.zendesk.logger.Logger;
+import com.zendesk.util.StringUtils;
 
 import zendesk.core.AnonymousIdentity;
 import zendesk.core.JwtIdentity;
@@ -11,12 +12,25 @@ import zendesk.support.Support;
 
 public class Global extends Application {
 
+    private static final String SUBDOMAIN_URL = "";
+    private static final String APPLICATION_ID = "";
+    private static final String OAUTH_CLIENT_ID = "";
+
+    private static boolean missingCredentials = false;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         // Enable logging
         Logger.setLoggable(true);
+
+        if (StringUtils.isEmpty(SUBDOMAIN_URL)
+                || StringUtils.isEmpty(APPLICATION_ID)
+                || StringUtils.isEmpty(OAUTH_CLIENT_ID)) {
+            missingCredentials = true;
+            return;
+        }
 
         /**
          * Initialize the SDK with your Zendesk subdomain, mobile SDK app ID, and client ID.
@@ -46,5 +60,9 @@ public class Global extends Application {
         Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
 
         Support.INSTANCE.init(Zendesk.INSTANCE);
+    }
+
+    static boolean isMissingCredentials() {
+        return missingCredentials;
     }
 }

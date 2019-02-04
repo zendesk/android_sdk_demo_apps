@@ -3,6 +3,7 @@ package com.zendesk.answerbot_sample;
 import android.app.Application;
 
 import com.zendesk.logger.Logger;
+import com.zendesk.util.StringUtils;
 
 import zendesk.answerbot.AnswerBot;
 import zendesk.core.AnonymousIdentity;
@@ -11,6 +12,12 @@ import zendesk.support.Support;
 
 public class Global extends Application {
 
+    private static final String SUBDOMAIN_URL = "";
+    private static final String APPLICATION_ID = "";
+    private static final String OAUTH_CLIENT_ID = "";
+
+    private static boolean missingCredentials = false;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -18,15 +25,22 @@ public class Global extends Application {
         // Enable logging
         Logger.setLoggable(true);
 
+        if (StringUtils.isEmpty(SUBDOMAIN_URL)
+                || StringUtils.isEmpty(APPLICATION_ID)
+                || StringUtils.isEmpty(OAUTH_CLIENT_ID)) {
+            missingCredentials = true;
+            return;
+        }
+
         /*
           Initialize the SDK with your Zendesk subdomain, mobile SDK app ID, and client ID.
 
           Get these details from your Zendesk dashboard: Admin -> Channels -> MobileSDK.
          */
         Zendesk.INSTANCE.init(this,
-                "https://{subdomain}.zendesk.com",
-                "{applicationId}",
-                "{oauthClientId}");
+                SUBDOMAIN_URL,
+                APPLICATION_ID,
+                OAUTH_CLIENT_ID);
 
         /*
           Set an identity (authentication).
@@ -47,5 +61,9 @@ public class Global extends Application {
 
         Support.INSTANCE.init(Zendesk.INSTANCE);
         AnswerBot.INSTANCE.init(Zendesk.INSTANCE, Support.INSTANCE);
+    }
+
+    static boolean isMissingCredentials() {
+        return missingCredentials;
     }
 }

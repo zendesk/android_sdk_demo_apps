@@ -24,4 +24,5 @@ android {
 dependencies {
     api group: 'com.zendesk', name: 'answerbot', version: '1.0.0-EAP1'
     implementation group: 'com.zendesk', name: 'support', version: rootProject.ext.zendeskSdkVersion
+    implementation project(":demo_apps_commons")
 }

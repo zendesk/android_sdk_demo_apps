@@ -5,6 +5,6 @@
     <string name="register_for_push">Register for push</string>
     <string name="disable_push">Disable push</string>
     <string name="logout">Logout</string>
-
+    <string name="missing_credentials">You must provide a Connect API key and valid Firebase credentials for this demo app to function correctly</string>
     <string name="connect_notification_channel_id">connect_demo_notification_channel</string>
 </resources>

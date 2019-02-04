@@ -5,6 +5,7 @@ import android.app.Application;
 import com.urbanairship.UAirship;
 import com.urbanairship.push.notifications.DefaultNotificationFactory;
 import com.zendesk.logger.Logger;
+import com.zendesk.util.StringUtils;
 
 import zendesk.core.AnonymousIdentity;
 import zendesk.core.Identity;
@@ -14,10 +15,23 @@ import zendesk.support.Support;
 
 public class Global extends Application {
 
+    private static final String SUBDOMAIN_URL = "";
+    private static final String APPLICATION_ID = "";
+    private static final String OAUTH_CLIENT_ID = "";
+
+    private static boolean missingCredentials = false;
+
     @Override
     public void onCreate() {
         super.onCreate();
         Logger.setLoggable(true);
+
+        if (StringUtils.isEmpty(SUBDOMAIN_URL)
+                || StringUtils.isEmpty(APPLICATION_ID)
+                || StringUtils.isEmpty(OAUTH_CLIENT_ID)) {
+            missingCredentials = true;
+            return;
+        }
 
         Zendesk.INSTANCE.init(
                 this,
@@ -49,6 +63,10 @@ public class Global extends Application {
         final DefaultNotificationFactory defaultNotificationFactory = new DefaultNotificationFactory(getApplicationContext());
         defaultNotificationFactory.setSmallIconId(R.drawable.ic_chat_bubble);
         UAirship.shared().getPushManager().setNotificationFactory(defaultNotificationFactory);
+    }
+
+    static boolean isMissingCredentials() {
+        return missingCredentials;
     }
 
 }

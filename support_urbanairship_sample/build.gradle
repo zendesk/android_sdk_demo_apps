@@ -28,4 +28,6 @@ dependencies {
     implementation group: 'com.zendesk', name: 'support', version: rootProject.ext.zendeskSdkVersion
     implementation group: 'com.urbanairship.android', name: 'urbanairship-sdk', version: '9.0.4'
     implementation group: 'com.google.android.gms', name: 'play-services-gcm', version: '12.0.0'
+
+    implementation project(":demo_apps_commons")
 }
