@@ -14,9 +14,9 @@ import zendesk.support.Support;
 
 public class Global extends Application {
 
-    private static final String SUBDOMAIN_URL = "";
-    private static final String APPLICATION_ID = "";
-    private static final String OAUTH_CLIENT_ID = "";
+    static final String SUBDOMAIN_URL = "";
+    static final String APPLICATION_ID = "";
+    static final String OAUTH_CLIENT_ID = "";
 
     private static boolean missingCredentials = false;
 
