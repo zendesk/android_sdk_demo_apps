@@ -6,7 +6,6 @@ import com.zendesk.logger.Logger;
 import com.zendesk.util.StringUtils;
 
 import zendesk.core.AnonymousIdentity;
-import zendesk.core.JwtIdentity;
 import zendesk.core.Zendesk;
 import zendesk.support.Support;
 
@@ -38,9 +37,9 @@ public class Global extends Application {
          * Get these details from your Zendesk dashboard: Admin -> Channels -> MobileSDK.
          */
         Zendesk.INSTANCE.init(this,
-                "https://{subdomain}.zendesk.com",
-                "{applicationId}",
-                "{oauthClientId}");
+                SUBDOMAIN_URL,
+                APPLICATION_ID,
+                OAUTH_CLIENT_ID);
 
         /**
          * Set an identity (authentication).
@@ -57,7 +56,7 @@ public class Global extends Application {
         );
 
         // b). JWT (Must be initialized with your JWT identifier)
-        Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
+//        Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
 
         Support.INSTANCE.init(Zendesk.INSTANCE);
     }

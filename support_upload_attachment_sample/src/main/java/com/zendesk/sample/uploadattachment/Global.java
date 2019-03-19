@@ -38,9 +38,9 @@ public class Global extends Application {
          * Get these details from your Zendesk dashboard: Admin -> Channels -> MobileSDK.
          */
         Zendesk.INSTANCE.init(this,
-                "https://{subdomain}.zendesk.com",
-                "{applicationId}",
-                "{oauthClientId}");
+                SUBDOMAIN_URL,
+                APPLICATION_ID,
+                OAUTH_CLIENT_ID);
 
         /**
          * Set an identity (authentication).

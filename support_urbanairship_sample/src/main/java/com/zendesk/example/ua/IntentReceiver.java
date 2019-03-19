@@ -82,9 +82,9 @@ public class IntentReceiver extends AirshipReceiver {
         if (!Zendesk.INSTANCE.isInitialized()) {
             Zendesk.INSTANCE.init(
                     context,
-                    context.getString(R.string.zd_url),
-                    context.getString(R.string.zd_appid),
-                    context.getString(R.string.zd_oauth)
+                    Global.SUBDOMAIN_URL,
+                    Global.APPLICATION_ID,
+                    Global.OAUTH_CLIENT_ID
             );
             Support.INSTANCE.init(Zendesk.INSTANCE);
         }

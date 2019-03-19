@@ -8,16 +8,15 @@ import com.zendesk.logger.Logger;
 import com.zendesk.util.StringUtils;
 
 import zendesk.core.AnonymousIdentity;
-import zendesk.core.Identity;
 import zendesk.core.Zendesk;
 import zendesk.support.Support;
 
 
 public class Global extends Application {
 
-    private static final String SUBDOMAIN_URL = "";
-    private static final String APPLICATION_ID = "";
-    private static final String OAUTH_CLIENT_ID = "";
+    static final String SUBDOMAIN_URL = "";
+    static final String APPLICATION_ID = "";
+    static final String OAUTH_CLIENT_ID = "";
 
     private static boolean missingCredentials = false;
 
@@ -33,12 +32,10 @@ public class Global extends Application {
             return;
         }
 
-        Zendesk.INSTANCE.init(
-                this,
-                getString(R.string.zd_url),
-                getString(R.string.zd_appid),
-                getString(R.string.zd_oauth)
-        );
+        Zendesk.INSTANCE.init(this,
+                SUBDOMAIN_URL,
+                APPLICATION_ID,
+                OAUTH_CLIENT_ID);
 
         Zendesk.INSTANCE.setIdentity(
                 new AnonymousIdentity.Builder()
