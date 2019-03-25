@@ -73,7 +73,7 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-        final EditText devicePushToken = (EditText) findViewById(R.id.main_edittext_push);
+        final EditText devicePushToken = findViewById(R.id.main_edittext_push);
 
         findViewById(R.id.main_btn_push_register).setOnClickListener(new View.OnClickListener() {
             @Override
