@@ -22,7 +22,7 @@ android {
 }
 
 dependencies {
-    api group: 'com.zendesk', name: 'answerbot', version: '1.0.0-EAP1'
+    api group: 'com.zendesk', name: 'answerbot', version: rootProject.ext.answerBotSdkVersion
     implementation group: 'com.zendesk', name: 'support', version: rootProject.ext.zendeskSdkVersion
     implementation project(":demo_apps_commons")
 }
