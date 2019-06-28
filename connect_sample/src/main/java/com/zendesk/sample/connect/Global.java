@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -17,8 +18,6 @@ public class Global extends Application {
     private final static String PROJECT_ID = ""; // Firebase console -> Project settings -> General -> Project Id
     private final static String API_KEY = ""; // Firebase console -> Project settings -> Cloud messaging -> Server Key
     private final static String FCM_SENDER_ID = ""; // Firebase console -> Project settings -> Cloud messaging -> Sender ID
-
-    private final static String NOTIFICATION_CHANNEL_NAME = "Connect Demo Notifications";
 
     private static boolean missingCredentials = false;
 
@@ -44,17 +43,13 @@ public class Global extends Application {
 
         // Need to handle notification channels for Oreo and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            String notificationChannelId = getString(R.string.connect_notification_channel_id);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-
-            NotificationChannel channel = new NotificationChannel(
-                    notificationChannelId,
-                    NOTIFICATION_CHANNEL_NAME,
-                    importance);
+            NotificationChannel defaultChannel = createDefaultNotificationChannel();
+            NotificationChannel silentChannel = createSilentNotificationChannel();
 
             NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             if (manager != null) {
-                manager.createNotificationChannel(channel);
+                manager.createNotificationChannel(defaultChannel);
+                manager.createNotificationChannel(silentChannel);
             }
         }
 
@@ -64,4 +59,47 @@ public class Global extends Application {
     static boolean isMissingCredentials() {
         return missingCredentials;
     }
+
+    /**
+     * Creates a {@link NotificationChannel} that will play a sound when a notification is received
+     * from a campaign where `sound` is set to default
+     *
+     * @return the created the {@link NotificationChannel}
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    private NotificationChannel createDefaultNotificationChannel() {
+        String channelId = getString(R.string.connect_notification_channel_id);
+        String channelName = getString(R.string.connect_notification_channel_name);
+
+        NotificationChannel channel = new NotificationChannel(
+                channelId,
+                channelName,
+                NotificationManager.IMPORTANCE_DEFAULT);
+
+        channel.enableVibration(true);
+
+        return channel;
+    }
+
+    /**
+     * Creates a {@link NotificationChannel} that will remain silent when a notification is received
+     * from a campaign where `sound` is set to silent
+     *
+     * @return the created the {@link NotificationChannel}
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    private NotificationChannel createSilentNotificationChannel() {
+        String channelId = getString(R.string.connect_silent_notification_channel_id);
+        String channelName = getString(R.string.connect_silent_notification_channel_name);
+
+        NotificationChannel channel = new NotificationChannel(
+                channelId,
+                channelName,
+                NotificationManager.IMPORTANCE_DEFAULT);
+
+        channel.setSound(null, null);
+
+        return channel;
+    }
+
 }

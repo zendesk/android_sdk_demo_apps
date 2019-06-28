@@ -7,7 +7,7 @@ ext {
     targetSdkVersion = 28
     zendeskSdkVersion = "2.3.1"
     zopimSdkVersion = "1.4.5"
-    connectSdkVersion = "2.0.0"
+    connectSdkVersion = "2.1.0"
     answerBotSdkVersion = "1.0.0-EAP2"
     appCompatVersion = "28.0.0"
 }
