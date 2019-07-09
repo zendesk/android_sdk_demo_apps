@@ -5,22 +5,22 @@ ext {
     compileSdkVersion = 28
     minSdkVersion = 16
     targetSdkVersion = 28
-    zendeskSdkVersion = "2.3.1"
+    zendeskSdkVersion = "3.0.0"
     zopimSdkVersion = "1.4.5"
     connectSdkVersion = "2.1.0"
-    answerBotSdkVersion = "1.0.0-EAP2"
+    answerBotSdkVersion = "1.0.0"
     appCompatVersion = "28.0.0"
 }
 
 buildscript {
-    ext.kotlin_version = '1.3.30'
+    ext.kotlin_version = '1.3.41'
 
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:3.4.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" }
 }
 
