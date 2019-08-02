@@ -16,10 +16,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <provider android:authorities="${applicationId}.firebaseinitprovider"
+        <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="${applicationId}.firebaseinitprovider"
             android:exported="false"
-            tools:node="remove"/>
+            tools:node="remove" />
 
         <activity android:name="com.zendesk.sample.connect.MainActivity">
             <intent-filter>
@@ -29,21 +30,11 @@
             </intent-filter>
         </activity>
 
-        <!-- This is the default service for handling incoming push notifications -->
-        <!-- Use this if you want the SDK to handle displaying the notifications -->
-        <!--<service android:name="com.zendesk.connect.ConnectMessagingService"-->
-            <!--android:exported="false">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
-            <!--</intent-filter>-->
-        <!--</service>-->
-
-        <!-- This is a sample service for handling incoming push notifications -->
-        <!-- Use this if you want to handle displaying the notifications yourself -->
-        <service android:name=".SampleMessagingService"
+        <service
+            android:name="com.zendesk.connect.ConnectMessagingService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
