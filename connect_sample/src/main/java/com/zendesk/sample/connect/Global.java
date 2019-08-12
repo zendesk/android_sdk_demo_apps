@@ -5,11 +5,13 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+
+import androidx.annotation.RequiresApi;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.zendesk.connect.Connect;
+import com.zendesk.connect.ConnectMessagingService;
 import com.zendesk.logger.Logger;
 
 public class Global extends Application {
@@ -52,6 +54,10 @@ public class Global extends Application {
                 manager.createNotificationChannel(silentChannel);
             }
         }
+
+        ConnectMessagingService.setMessageReceiver(new SampleMessageReceiver());
+        ConnectMessagingService.setNotificationEventListener(new SampleNotificationEventListener());
+        ConnectMessagingService.setNotificationFactory(new SampleNotificationFactory(this));
 
         Connect.INSTANCE.init(this, CONNECT_PRIVATE_KEY);
     }
