@@ -1,33 +1,29 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId rootProject.ext.applicationId + ".urbanairship"
+        applicationId rootProject.ext.applicationId + ".messaging"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
+
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
-    lintOptions {
-        abortOnError true
-        lintConfig file("lint-rules.xml")
-    }
 }
 
 dependencies {
+    api group: 'com.zendesk', name: 'answerbot', version: rootProject.ext.answerBotSdkVersion
     implementation group: 'com.zendesk', name: 'support', version: rootProject.ext.supportSdkVersion
-    implementation group: 'com.urbanairship.android', name: 'urbanairship-sdk', version: '9.3.1'
-    implementation group: 'com.google.android.gms', name: 'play-services-gcm', version: '16.1.0'
+    implementation group: 'com.zendesk', name: 'messaging', version: rootProject.ext.messagingSdkVersion
 
     implementation project(":demo_apps_commons")
 }
