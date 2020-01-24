@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    implementation group: 'com.zendesk', name: 'support-providers', version: rootProject.ext.zendeskSdkVersion
+    implementation group: 'com.zendesk', name: 'support-providers', version: rootProject.ext.supportSdkVersion
     implementation group: 'com.zendesk', name: 'belvedere', version: "1.1.1.1"
 
     implementation group: 'com.android.support', name: 'appcompat-v7', version: rootProject.ext.appCompatVersion
