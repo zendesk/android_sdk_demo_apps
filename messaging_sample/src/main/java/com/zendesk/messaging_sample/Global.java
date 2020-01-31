@@ -6,6 +6,7 @@ import android.app.Application;
 import com.zendesk.logger.Logger;
 import com.zendesk.util.StringUtils;
 
+import zendesk.answerbot.AnswerBot;
 import zendesk.core.AnonymousIdentity;
 import zendesk.core.JwtIdentity;
 import zendesk.core.Zendesk;
@@ -61,6 +62,7 @@ public class Global extends Application {
         Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
 
         Support.INSTANCE.init(Zendesk.INSTANCE);
+        AnswerBot.INSTANCE.init(Zendesk.INSTANCE, Support.INSTANCE);
     }
 
     static boolean isMissingCredentials() {
