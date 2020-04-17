@@ -1,25 +1,27 @@
-package com.zendesk.messaging_sample;
+package com.zendesk.chat_v2.sample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import zendesk.answerbot.AnswerBotEngine;
+import zendesk.chat.ChatConfiguration;
 import zendesk.chat.ChatEngine;
 import zendesk.messaging.MessagingActivity;
-import zendesk.support.SupportEngine;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (Global.isMissingCredentials()) {
             setContentView(R.layout.missing_credentials);
             return;
         }
 
+        ChatConfiguration chatConfiguration = ChatConfiguration.builder().build();
+
         MessagingActivity.builder()
-                .withEngines(AnswerBotEngine.engine(), SupportEngine.engine(), ChatEngine.engine())
-                .show(this);
+                .withEngines(ChatEngine.engine())
+                .show(this, chatConfiguration);
     }
 }

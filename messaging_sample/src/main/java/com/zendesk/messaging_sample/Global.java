@@ -7,6 +7,7 @@ import com.zendesk.logger.Logger;
 import com.zendesk.util.StringUtils;
 
 import zendesk.answerbot.AnswerBot;
+import zendesk.chat.Chat;
 import zendesk.core.AnonymousIdentity;
 import zendesk.core.JwtIdentity;
 import zendesk.core.Zendesk;
@@ -17,6 +18,7 @@ public class Global extends Application {
     private static final String SUBDOMAIN_URL = "";
     private static final String APPLICATION_ID = "";
     private static final String OAUTH_CLIENT_ID = "";
+    private final static String CHAT_ACCOUNT_KEY = "";
 
     private static boolean missingCredentials = false;
 
@@ -29,7 +31,8 @@ public class Global extends Application {
 
         if (StringUtils.isEmpty(SUBDOMAIN_URL)
                 || StringUtils.isEmpty(APPLICATION_ID)
-                || StringUtils.isEmpty(OAUTH_CLIENT_ID)) {
+                || StringUtils.isEmpty(OAUTH_CLIENT_ID)
+                || StringUtils.isEmpty(CHAT_ACCOUNT_KEY)) {
             missingCredentials = true;
             return;
         }
@@ -63,6 +66,7 @@ public class Global extends Application {
 
         Support.INSTANCE.init(Zendesk.INSTANCE);
         AnswerBot.INSTANCE.init(Zendesk.INSTANCE, Support.INSTANCE);
+        Chat.INSTANCE.init(this, CHAT_ACCOUNT_KEY);
     }
 
     static boolean isMissingCredentials() {
