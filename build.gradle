@@ -7,9 +7,10 @@ ext {
     targetSdkVersion = 29
     supportSdkVersion = "4.0.0"
     zopimSdkVersion = "1.4.9"
+    chatSdkVersion = "2.0.0"
     connectSdkVersion = "3.0.0"
     answerBotSdkVersion = "2.0.0"
-    messagingSdkVersion = "4.0.0"
+    messagingSdkVersion = "4.2.1"
     appCompatVersion = "28.0.0"
 }
 
@@ -30,7 +31,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://zendesk.artifactoryonline.com/zendesk/repo' }
+        maven { url 'https://zendesk.jfrog.io/zendesk/repo' }
     }
 }
 
