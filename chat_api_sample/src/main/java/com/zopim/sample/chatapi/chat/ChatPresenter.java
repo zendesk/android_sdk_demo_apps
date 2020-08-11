@@ -1,6 +1,6 @@
 package com.zopim.sample.chatapi.chat;
 
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import com.zendesk.belvedere.BelvedereResult;
 import com.zendesk.util.CollectionUtils;

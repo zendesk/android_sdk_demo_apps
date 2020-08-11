@@ -19,7 +19,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/chat_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -99,7 +99,7 @@
                     android:padding="12dp"
                     app:srcCompat="@drawable/ic_camera_alt_black_24dp" />
 
-                <android.support.design.widget.FloatingActionButton
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/chat_send_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

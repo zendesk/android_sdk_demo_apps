@@ -1,9 +1,10 @@
 package com.zopim.sample.chatapi.chat.log.items;
 
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.zopim.android.sdk.model.Agent;
 import com.zopim.android.sdk.model.items.RowItem;

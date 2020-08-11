@@ -1,10 +1,11 @@
 package com.zopim.sample.chatapi;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.zopim.sample.chatapi.chat.ChatActivity;
 import com.zopim.sample.chatapi.databinding.ActivityMainBinding;

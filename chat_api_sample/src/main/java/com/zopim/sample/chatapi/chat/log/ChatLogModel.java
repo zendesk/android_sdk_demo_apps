@@ -1,7 +1,7 @@
 package com.zopim.sample.chatapi.chat.log;
 
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.zopim.android.sdk.data.DataSource;
 import com.zopim.android.sdk.model.items.RowItem;

@@ -1,9 +1,10 @@
 package com.zopim.sample.chatapi.chat.log;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.zopim.sample.chatapi.R;
 import com.zopim.sample.chatapi.chat.log.items.ItemType;
@@ -56,7 +57,7 @@ public class ChatLogView extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 holderView = li.inflate(R.layout.chat_log_visitor_holder, parent, false);
             }
 
-            final ViewGroup holderContainer = (ViewGroup) holderView.findViewById(R.id.chat_log_holder_placeholder);
+            final ViewGroup holderContainer = holderView.findViewById(R.id.chat_log_holder_placeholder);
             li.inflate(itemType.getLayout(), holderContainer, true);
 
             return new RecyclerView.ViewHolder(holderView) { };

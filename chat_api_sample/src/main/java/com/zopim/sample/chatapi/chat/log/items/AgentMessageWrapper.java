@@ -1,6 +1,6 @@
 package com.zopim.sample.chatapi.chat.log.items;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.zopim.android.sdk.model.Agent;

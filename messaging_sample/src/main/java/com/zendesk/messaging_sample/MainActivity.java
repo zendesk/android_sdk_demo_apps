@@ -1,6 +1,6 @@
 package com.zendesk.messaging_sample;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import zendesk.answerbot.AnswerBotEngine;

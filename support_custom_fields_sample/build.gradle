@@ -21,7 +21,7 @@ android {
 dependencies {
     implementation group: 'com.zendesk', name: 'support-providers', version: rootProject.ext.supportSdkVersion
 
-    implementation group: 'com.android.support', name:'appcompat-v7', version: rootProject.ext.appCompatVersion
+    implementation group: 'androidx.appcompat', name: 'appcompat', version: rootProject.ext.appCompatVersion
 
     implementation project(":demo_apps_commons")
 }

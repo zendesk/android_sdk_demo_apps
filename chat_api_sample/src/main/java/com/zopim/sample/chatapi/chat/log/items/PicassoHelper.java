@@ -8,11 +8,11 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.net.Uri;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -35,24 +35,25 @@ class PicassoHelper {
      * Load an image into the provided {@link ImageView}
      *
      * <p>
-     *     This method is optimized for loading images into child views of a {@link RecyclerView}.
-     *     <br>
-     *     To reduce the memory footprint images get resized to the actual size of the provided {@link ImageView}.
-     *     The side effect for that is a slightly delayed loading of the image, because we have to wait until
-     *     the view is inflated to its actual size.
-     *     <br>
-     *     After resizing the image, it gets cropped to a square and a radius applied to the corners.
-     *     <br>
-     *     The consumer of this method will be notified through the passed in callback, as soon as the images
-     *     is successfully loaded.
+     * This method is optimized for loading images into child views of a {@link RecyclerView}.
+     * <br>
+     * To reduce the memory footprint images get resized to the actual size of the provided {@link ImageView}.
+     * The side effect for that is a slightly delayed loading of the image, because we have to wait until
+     * the view is inflated to its actual size.
+     * <br>
+     * After resizing the image, it gets cropped to a square and a radius applied to the corners.
+     * <br>
+     * The consumer of this method will be notified through the passed in callback, as soon as the images
+     * is successfully loaded.
      * </p>
      *
      * @param imageView the {@link ImageView}
-     * @param file a {@link File} that represents an image
-     * @param callback result {@link Callback.EmptyCallback}
+     * @param file      a {@link File} that represents an image
+     * @param callback  result {@link Callback.EmptyCallback}
      */
-    static void loadImage(@NonNull final ImageView imageView, @NonNull final File file,
-                          @NonNull final Callback.EmptyCallback callback) {
+    static void loadImage(@NonNull final ImageView imageView,
+                          @NonNull final File file,
+                          @Nullable final Callback.EmptyCallback callback) {
         loadImage(imageView, Picasso.with(imageView.getContext()).load(file), callback);
     }
 
@@ -60,24 +61,25 @@ class PicassoHelper {
      * Load an image into the provided {@link ImageView}
      *
      * <p>
-     *     This method is optimized for loading images into child views of a {@link RecyclerView}.
-     *     <br>
-     *     To reduce the memory footprint images get resized to the actual size of the provided {@link ImageView}.
-     *     The side effect for that is a slightly delayed loading of the image, because we have to wait until
-     *     the view is inflated to its actual size.
-     *     <br>
-     *     After resizing the image, it gets cropped to a square and a radius applied to the corners.
-     *     <br>
-     *     The consumer of this method will be notified through the passed in callback, as soon as the images
-     *     is successfully loaded.
+     * This method is optimized for loading images into child views of a {@link RecyclerView}.
+     * <br>
+     * To reduce the memory footprint images get resized to the actual size of the provided {@link ImageView}.
+     * The side effect for that is a slightly delayed loading of the image, because we have to wait until
+     * the view is inflated to its actual size.
+     * <br>
+     * After resizing the image, it gets cropped to a square and a radius applied to the corners.
+     * <br>
+     * The consumer of this method will be notified through the passed in callback, as soon as the images
+     * is successfully loaded.
      * </p>
      *
      * @param imageView the {@link ImageView}
-     * @param uri an {@link Uri} to an image
-     * @param callback result {@link Callback.EmptyCallback}
+     * @param uri       an {@link Uri} to an image
+     * @param callback  result {@link Callback.EmptyCallback}
      */
-    static void loadImage(@NonNull final ImageView imageView, @NonNull final Uri uri,
-                          final @NonNull Callback.EmptyCallback callback) {
+    static void loadImage(@NonNull final ImageView imageView,
+                          @NonNull final Uri uri,
+                          @Nullable final Callback.EmptyCallback callback) {
         loadImage(imageView, Picasso.with(imageView.getContext()).load(uri), callback);
     }
 
@@ -94,7 +96,7 @@ class PicassoHelper {
         final Picasso picasso = Picasso.with(imageView.getContext());
 
         final RequestCreator requestCreator;
-        if(StringUtils.hasLength(avatarUri)) {
+        if (StringUtils.hasLength(avatarUri)) {
             requestCreator = picasso
                     .load(avatarUri).error(DEFAULT_AVATAR)
                     .error(DEFAULT_AVATAR)
@@ -109,8 +111,9 @@ class PicassoHelper {
                 .into(imageView);
     }
 
-    private static void loadImage(@NonNull final ImageView imageView, @NonNull final RequestCreator requestCreator,
-                                  @NonNull final Callback.EmptyCallback callback) {
+    private static void loadImage(@NonNull final ImageView imageView,
+                                  @NonNull final RequestCreator requestCreator,
+                                  @Nullable final Callback.EmptyCallback callback) {
         imageView.post(new Runnable() {
             @Override
             public void run() {
@@ -121,19 +124,14 @@ class PicassoHelper {
                         .error(DEFAULT_IMAGE)
                         .transform(new ResizeTransformation(imageWidth));
 
-                if(imageWidth > 0) {
+                if (imageWidth > 0) {
                     creator = creator.resize(imageWidth, 0);
                 }
 
-                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD_MR1) {
-                    // simplified transformation and no post fitting of the image
-                    creator = creator.transform(new CropSquareTransform(0));
-                } else {
-                    final int radius = imageView.getContext()
-                            .getResources()
-                            .getDimensionPixelSize(R.dimen.attachment_preview_radius);
-                    creator = creator.transform(new CropSquareTransform(radius));
-                }
+                final int radius = imageView.getContext()
+                        .getResources()
+                        .getDimensionPixelSize(R.dimen.attachment_preview_radius);
+                creator = creator.transform(new CropSquareTransform(radius));
 
                 creator.into(imageView, callback);
             }
@@ -150,7 +148,7 @@ class PicassoHelper {
 
         @Override
         public Bitmap transform(final Bitmap source) {
-            if(width <= 0) return source;
+            if (width <= 0) return source;
 
             double aspectRatio = (double) source.getHeight() / (double) source.getWidth();
             int targetHeight = (int) (width * aspectRatio);
@@ -169,7 +167,7 @@ class PicassoHelper {
 
     private static class CropSquareTransform implements Transformation {
 
-        private int radius = -1;
+        private int radius;
 
         /**
          * Constructs transformation with a clip radius for rounding corners.
@@ -195,8 +193,8 @@ class PicassoHelper {
                 return cropped;
             }
 
-            /**
-             * Round the corners of the image using the radius specified in {@link CropSquareTransform}
+            /*
+              Round the corners of the image using the radius specified in {@link CropSquareTransform}
              */
             // create paint out of the image
             final Paint paint = new Paint();
