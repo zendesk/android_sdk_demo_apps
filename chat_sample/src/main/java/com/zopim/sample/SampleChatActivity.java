@@ -2,10 +2,10 @@ package com.zopim.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.zopim.android.sdk.api.Chat;
 import com.zopim.android.sdk.api.ZopimChat;
@@ -26,7 +26,7 @@ public class SampleChatActivity extends AppCompatActivity implements ChatListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_pre_chat_activity);
         // use toolbar as action bar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         // orientation change
@@ -34,7 +34,7 @@ public class SampleChatActivity extends AppCompatActivity implements ChatListene
             return;
         }
 
-        /**
+        /*
          * If starting activity while the chat widget is actively presented the activity will resume the current chat
          */
         boolean widgetWasActive = stopService(new Intent(this, ChatWidgetService.class));
@@ -43,9 +43,9 @@ public class SampleChatActivity extends AppCompatActivity implements ChatListene
             return;
         }
 
-        /**
+        /*
          * We've received an intent request to resume the existing chat.
-         * Resume the chat via {@link com.zopim.android.sdk.api.ZopimChat#resume(android.support.v4.app.FragmentActivity)} and
+         * Resume the chat via {@link com.zopim.android.sdk.api.ZopimChat#resume(FragmentActivity)} and
          * start the {@link ZopimChatLogFragment}
          */
         if (getIntent() != null) {
@@ -56,7 +56,7 @@ public class SampleChatActivity extends AppCompatActivity implements ChatListene
             }
         }
 
-        /**
+        /*
          * Attempt to resume chat. If there is an active chat it will be resumed.
          */
         Chat chat = ZopimChat.resume(this);
@@ -65,7 +65,7 @@ public class SampleChatActivity extends AppCompatActivity implements ChatListene
             return;
         }
 
-        /**
+        /*
          * Start a new chat
          */
         {

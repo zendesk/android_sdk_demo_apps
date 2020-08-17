@@ -22,8 +22,8 @@ dependencies {
     implementation group: 'com.zendesk', name: 'support-providers', version: rootProject.ext.supportSdkVersion
     implementation group: 'com.zendesk', name: 'belvedere', version: "1.1.1.1"
 
-    implementation group: 'com.android.support', name: 'appcompat-v7', version: rootProject.ext.appCompatVersion
-    implementation group: 'com.android.support', name: 'design', version: rootProject.ext.appCompatVersion
+    implementation group: 'androidx.appcompat', name: 'appcompat', version: rootProject.ext.appCompatVersion
+    implementation group: 'com.google.android.material', name: 'material', version: rootProject.ext.appCompatVersion
 
     implementation project(":demo_apps_commons")
 }

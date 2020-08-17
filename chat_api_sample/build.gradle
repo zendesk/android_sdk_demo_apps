@@ -33,9 +33,8 @@ ext {
 dependencies {
     implementation group: 'com.zopim.android', name: 'sdk-api', version: rootProject.ext.zopimSdkVersion
 
-    implementation group: 'com.android.support', name: 'appcompat-v7', version: rootProject.ext.appCompatVersion
-    implementation group: 'com.android.support', name: 'design', version: rootProject.ext.appCompatVersion
-    implementation group: 'com.android.support', name: 'recyclerview-v7', version: rootProject.ext.appCompatVersion
+    implementation group: 'com.google.android.material', name: 'material', version: rootProject.ext.appCompatVersion
+    implementation group: 'androidx.recyclerview', name: 'recyclerview', version: rootProject.ext.appCompatVersion
 
     implementation group: 'com.squareup.picasso', name: 'picasso', version: project.ext.picassoVersion
 

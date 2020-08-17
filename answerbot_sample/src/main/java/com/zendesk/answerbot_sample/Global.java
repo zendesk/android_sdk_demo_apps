@@ -8,7 +8,7 @@ import com.zendesk.util.StringUtils;
 import zendesk.answerbot.AnswerBot;
 import zendesk.core.AnonymousIdentity;
 import zendesk.core.Zendesk;
-import zendesk.support.Support;
+import zendesk.support.Guide;
 
 public class Global extends Application {
 
@@ -58,9 +58,8 @@ public class Global extends Application {
 
         // b). JWT (Must be initialized with your JWT identifier)
         // Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
-
-        Support.INSTANCE.init(Zendesk.INSTANCE);
-        AnswerBot.INSTANCE.init(Zendesk.INSTANCE, Support.INSTANCE);
+        Guide.INSTANCE.init(Zendesk.INSTANCE);
+        AnswerBot.INSTANCE.init(Zendesk.INSTANCE, Guide.INSTANCE);
     }
 
     static boolean isMissingCredentials() {
