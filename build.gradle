@@ -5,12 +5,12 @@ ext {
     compileSdkVersion = 29
     minSdkVersion = 16
     targetSdkVersion = 29
-    supportSdkVersion = "5.0.0"
+    supportSdkVersion = "5.0.1"
     zopimSdkVersion = "1.4.9"
-    chatSdkVersion = "3.0.0"
+    chatSdkVersion = "3.1.0"
     connectSdkVersion = "3.0.0"
-    answerBotSdkVersion = "3.0.0"
-    messagingSdkVersion = "5.0.0"
+    answerBotSdkVersion = "3.0.1"
+    messagingSdkVersion = "5.1.0"
     guideSdkVersion = "1.0.0"
     appCompatVersion = "1.1.0"
     belvedereVersion = "2.3.0"
