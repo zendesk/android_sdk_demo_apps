@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="chat_menu_item_rate">Rate chat</string>
+    <string name="rate_chat_dialog_message">Was the agent helpful?</string>
 </resources>
