@@ -4,4 +4,5 @@
     <string name="type_a_message">Type a message...</string>
     <string name="position_title">Queue position: 2</string>
     <string name="hello">Hello</string>
+    <string name="failed_to_provide_valid_credentials_for_this_demo_app">Failed to provide valid credentials for this demo app</string>
 </resources>
