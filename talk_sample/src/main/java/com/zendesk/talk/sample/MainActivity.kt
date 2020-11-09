@@ -2,6 +2,7 @@ package com.zendesk.talk.sample
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.zendesk.talk.sample.databinding.ActivityMainBinding
@@ -23,6 +24,18 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.call_agent -> {
+            SampleApplication.talk?.startCallSetupFlow(
+                    context = this,
+                    digitalLine = SampleApplication.DIGITAL_LINE,
+                    successIntent = null
+            )
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
 
     private fun ActivityMainBinding.setMissingCredentials(missing: Boolean) {
