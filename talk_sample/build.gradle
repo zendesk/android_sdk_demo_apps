@@ -40,5 +40,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "zendesk.talk:talk-android:1.0.0"
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
     implementation project(":demo_apps_commons")
 }

@@ -5,4 +5,8 @@
     <string name="position_title">Queue position: 2</string>
     <string name="hello">Hello</string>
     <string name="failed_to_provide_valid_credentials_for_this_demo_app">Failed to provide valid credentials for this demo app</string>
+    <string name="check_line_status">Check line status</string>
+    <string name="line_status_checking">Checking line status...</string>
+    <string name="line_available">Line available</string>
+    <string name="line_not_available">Line not available</string>
 </resources>

@@ -58,6 +58,16 @@
         app:layout_constraintTop_toTopOf="@id/queue_position"
         app:layout_constraintVertical_chainStyle="packed" />
 
+    <Button
+        android:id="@+id/check_line_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple500"
+        android:text="@string/check_line_status"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@id/message_divider"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <View
         android:id="@+id/message_divider"
         style="@style/Divider"
