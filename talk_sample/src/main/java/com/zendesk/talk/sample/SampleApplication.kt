@@ -12,9 +12,11 @@ class SampleApplication : Application() {
         private const val SUBDOMAIN_URL = ""
         private const val APPLICATION_ID = ""
         private const val OAUTH_CLIENT_ID = ""
+
+        // set your digital line name
         const val DIGITAL_LINE = ""
 
-        private val CREDENTIALS = listOf(SUBDOMAIN_URL, APPLICATION_ID, OAUTH_CLIENT_ID, DIGITAL_LINE)
+        private val CREDENTIALS = listOf(SUBDOMAIN_URL, APPLICATION_ID, OAUTH_CLIENT_ID)
 
         var talk: Talk? = null
             private set

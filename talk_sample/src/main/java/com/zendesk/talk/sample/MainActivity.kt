@@ -36,7 +36,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        if (!SampleApplication.isMissingCredentials() && lineAvailable) {
+        if (!SampleApplication.isMissingCredentials()
+                && lineAvailable
+                && SampleApplication.DIGITAL_LINE.isNotEmpty()
+        ) {
             menuInflater.inflate(R.menu.main_activity_menu, menu)
             return true
         }
