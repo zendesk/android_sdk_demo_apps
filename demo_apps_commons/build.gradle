@@ -25,5 +25,5 @@ android {
 }
 
 dependencies {
-    implementation group: 'androidx.appcompat', name: 'appcompat', version: rootProject.ext.appCompatVersion
+    api group: 'androidx.appcompat', name: 'appcompat', version: rootProject.ext.appCompatVersion
 }
