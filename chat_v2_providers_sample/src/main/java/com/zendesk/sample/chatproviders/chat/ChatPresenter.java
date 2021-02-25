@@ -1,14 +1,11 @@
 package com.zendesk.sample.chatproviders.chat;
 
 import android.net.Uri;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.zendesk.util.CollectionUtils;
-
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import zendesk.belvedere.Belvedere;
 import zendesk.belvedere.Callback;
 import zendesk.belvedere.MediaResult;
@@ -60,12 +57,17 @@ class ChatPresenter implements ChatMvp.Presenter {
             belvedere.resolveUris(fileUris, "images", new Callback<List<MediaResult>>() {
                 @Override
                 public void success(List<MediaResult> result) {
-                    for (MediaResult mediaResult: result) {
+                    for (MediaResult mediaResult : result) {
                         model.sendAttachment(mediaResult.getFile());
                     }
                 }
             });
         }
+    }
+
+    @Override
+    public void sendFile(File localFile) {
+        model.sendAttachment(localFile);
     }
 
     @Override
