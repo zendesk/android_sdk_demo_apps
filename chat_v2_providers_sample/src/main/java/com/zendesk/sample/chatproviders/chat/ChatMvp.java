@@ -58,6 +58,8 @@ interface ChatMvp {
 
         void sendFile(List<MediaResult> mediaResults);
 
+        void sendFile(File localFile);
+
         void onDestroy();
 
         void chatDismissed();

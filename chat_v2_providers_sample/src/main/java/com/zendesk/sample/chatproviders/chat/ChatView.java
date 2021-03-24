@@ -1,10 +1,13 @@
 package com.zendesk.sample.chatproviders.chat;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,10 +20,16 @@ import com.zendesk.sample.chatproviders.R;
 import com.zendesk.sample.chatproviders.chat.log.ChatLogModel;
 import com.zendesk.sample.chatproviders.chat.log.ChatLogMvp;
 import com.zendesk.sample.chatproviders.chat.log.ChatLogPresenter;
+import com.zendesk.sample.chatproviders.chat.log.ChatLogView;
 import com.zendesk.sample.chatproviders.databinding.ActivityChatBinding;
 import com.zendesk.util.StringUtils;
 import com.zendesk.sample.chatproviders.chat.log.ChatLogView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import zendesk.belvedere.BelvedereUi;
@@ -34,6 +43,8 @@ import zendesk.chat.ChatLog;
  * to display the chat.
  */
 class ChatView implements ChatMvp.View {
+
+    private static final String LOG_TAG = "ChatView";
 
     private ChatMvp.Presenter presenter;
 
@@ -78,6 +89,7 @@ class ChatView implements ChatMvp.View {
         views.chatInput.setEnabled(enabled);
         views.chatCameraBtn.setEnabled(enabled);
         views.chatGalleryBtn.setEnabled(enabled);
+        views.chatLocalImageBtn.setEnabled(enabled);
     }
 
     @Override
@@ -117,6 +129,31 @@ class ChatView implements ChatMvp.View {
                 BelvedereUi.imageStream(activity.getApplicationContext())
                         .withDocumentIntent("*/*", true)
                         .showPopup(activity);
+            }
+        });
+
+        views.chatLocalImageBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Handler handler = new Handler(Looper.getMainLooper());
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            File tempFile = createTempFile(".png", context.getCacheDir());
+                            InputStream inputStream = context.getAssets().open("zenchat.png");
+                            OutputStream outputStream = new FileOutputStream(tempFile.getPath());
+                            if (inputStream != null) {
+                                syncIoStream(inputStream, outputStream);
+                                presenter.sendFile(tempFile);
+                            }
+                        } catch (IOException ex) {
+                            Log.e(LOG_TAG, ex.getMessage());
+                        } finally {
+                            handler.removeCallbacks(this);
+                        }
+                    }
+                });
             }
         });
     }
@@ -189,6 +226,18 @@ class ChatView implements ChatMvp.View {
         final Snackbar snackbar = Snackbar.make(views.chatRootContainer, title, Snackbar.LENGTH_INDEFINITE);
         snackbar.getView().setBackgroundColor(ContextCompat.getColor(context, R.color.color_snackbar_connection));
         return snackbar;
+    }
+
+    private File createTempFile(String extension, File directory) throws IOException {
+        return File.createTempFile("temp-" + extension.replace(".", ""), extension, directory);
+    }
+
+    private void syncIoStream(InputStream inStream, OutputStream outStream) throws IOException {
+        byte[] b = new byte[inStream.available()];
+        inStream.read(b);
+        outStream.write(b);
+        inStream.close();
+        outStream.close();
     }
 
     private class BelvedereListener implements ImageStream.Listener {
