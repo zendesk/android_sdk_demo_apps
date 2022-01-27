@@ -8,7 +8,7 @@ This repository provides you with sample Apps to help learn how to use the Zende
 We hope you'll find those sample Apps useful and encourage you to re-use some of this code in your own Apps.   
  
 ## Owners
-If you have any questions please email support@zendesk.com.
+If you have any questions please contact us through one of the methods outlined [here](https://support.zendesk.com/hc/en-us/articles/4408843597850-Contacting-Zendesk-Customer-Support).
  
 ## Getting Started
 Each of the modules in this project is a stand-alone Android app, capable of being run independently through Gradle or Android Studio. 
@@ -17,5 +17,4 @@ Each of the modules in this project is a stand-alone Android app, capable of bei
 Pull requests are welcome.
  
 ## Bugs
-Please submit bug reports to [Zendesk](https://support.zendesk.com/requests/new).
- 
+Please submit bug reports to [Zendesk](https://support.zendesk.com/hc/en-us/articles/4408843597850-Contacting-Zendesk-Customer-Support).
