@@ -37,6 +37,7 @@ class VisitorAttachmentWrapper extends ViewHolderWrapper<ChatLog.AttachmentMessa
 
         final Attachment attachment = getChatLog().getAttachment();
         final File file = attachment.getFile();
+
         if(file != null && file.exists()) {
             PicassoHelper.loadImage(imageView, file, null);
         } else {

@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ZendeskSdkTheme.Light.DarkActionBar">
-        <activity android:name=".RequestUpdatesActivity">
+        <activity android:name=".RequestUpdatesActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

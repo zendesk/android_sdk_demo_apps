@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.PicassoProvider;
 import com.squareup.picasso.RequestCreator;
 import com.squareup.picasso.Transformation;
 import com.zendesk.util.StringUtils;
@@ -54,7 +55,7 @@ class PicassoHelper {
     static void loadImage(@NonNull final ImageView imageView,
                           @NonNull final File file,
                           final Callback.EmptyCallback callback) {
-        loadImage(imageView, Picasso.with(imageView.getContext()).load(file), callback);
+        loadImage(imageView, Picasso.get().load(file), callback);
     }
 
     /**
@@ -79,7 +80,7 @@ class PicassoHelper {
      */
     static void loadImage(@NonNull final ImageView imageView, @NonNull final Uri uri,
                           final @Nullable Callback.EmptyCallback callback) {
-        loadImage(imageView, Picasso.with(imageView.getContext()).load(uri), callback);
+        loadImage(imageView, Picasso.get().load(uri), callback);
     }
 
     /**
@@ -92,7 +93,7 @@ class PicassoHelper {
      * @param avatarUri uri as a {@link String} to avatar image
      */
     static void loadAvatarImage(@NonNull final ImageView imageView, @Nullable final String avatarUri) {
-        final Picasso picasso = Picasso.with(imageView.getContext());
+        final Picasso picasso = Picasso.get();
 
         final RequestCreator requestCreator;
         if(StringUtils.hasLength(avatarUri)) {

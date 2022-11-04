@@ -9,7 +9,7 @@ import zendesk.chat.Chat;
 
 public class Global extends Application {
 
-    private static final String CHAT_ACCOUNT_KEY = "2PT4TD5ox8d19nrLoBAGpMk87L4r4VQQ";
+    private static final String CHAT_ACCOUNT_KEY = "";
 
     private static boolean missingCredentials = false;
 

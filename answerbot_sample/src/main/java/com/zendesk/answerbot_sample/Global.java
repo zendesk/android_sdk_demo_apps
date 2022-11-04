@@ -9,6 +9,7 @@ import zendesk.answerbot.AnswerBot;
 import zendesk.core.AnonymousIdentity;
 import zendesk.core.Zendesk;
 import zendesk.support.Guide;
+import zendesk.support.Support;
 
 public class Global extends Application {
 
@@ -58,7 +59,6 @@ public class Global extends Application {
 
         // b). JWT (Must be initialized with your JWT identifier)
         // Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
-        Guide.INSTANCE.init(Zendesk.INSTANCE);
         AnswerBot.INSTANCE.init(Zendesk.INSTANCE, Guide.INSTANCE);
     }
 

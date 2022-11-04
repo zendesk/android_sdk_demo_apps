@@ -1,30 +1,39 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 ext {
-    applicationId = "com.zendesk.sample"
-    compileSdkVersion = 29
-    minSdkVersion = 16
-    targetSdkVersion = 30
-    supportSdkVersion = "5.0.3"
-    zopimSdkVersion = "1.4.9"
-    chatSdkVersion = "3.3.0"
-    connectSdkVersion = "3.0.0"
-    answerBotSdkVersion = "3.0.2"
-    messagingSdkVersion = "5.2.0"
-    guideSdkVersion = "1.0.2"
-    appCompatVersion = "1.1.0"
-    belvedereVersion = "2.3.0"
+    applicationId = "com.zendesk"
+    compileSdkVersion = 33
+    minSdkVersion = 21
+    targetSdkVersion = 33
+
+    // SDK Versions
+
+    supportSdkVersion = "5.1.0"
+    chatSdkVersion = "3.3.6"
+    answerBotSdkVersion = "3.0.9"
+    messagingSdkVersion = "5.2.5"
+    talkSdkVersion = "1.1.0"
+
+    // Other Dependencies
+
+    appCompatVersion = "1.2.0"
+    constraintlayoutVersion = "2.1.4"
+    lifecycleVersion = "2.5.1"
+    belvedere2Version = "3.0.5"
+    picassoVersion = "2.5.2"
+    firebaseVersion = "20.2.4"
+
 }
 
 buildscript {
-    ext.kotlin_version = '1.3.72'
+    ext.kotlin_version = '1.7.10'
 
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.android.tools.build:gradle:7.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -32,7 +41,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven { url 'https://zendesk.jfrog.io/zendesk/repo' }
     }
 }

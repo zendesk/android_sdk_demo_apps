@@ -11,6 +11,7 @@ import zendesk.chat.Chat;
 import zendesk.core.AnonymousIdentity;
 import zendesk.core.JwtIdentity;
 import zendesk.core.Zendesk;
+import zendesk.support.Guide;
 import zendesk.support.Support;
 
 public class Global extends Application {
@@ -62,10 +63,9 @@ public class Global extends Application {
         );
 
         // b). JWT (Must be initialized with your JWT identifier)
-        Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
-
+        //Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
         Support.INSTANCE.init(Zendesk.INSTANCE);
-        AnswerBot.INSTANCE.init(Zendesk.INSTANCE, Support.INSTANCE);
+        AnswerBot.INSTANCE.init(Zendesk.INSTANCE, Guide.INSTANCE);
         Chat.INSTANCE.init(this, CHAT_ACCOUNT_KEY);
     }
 

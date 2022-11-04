@@ -4,7 +4,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId 'com.zendesk.chat.chatproviders'
+        applicationId rootProject.ext.applicationId + '.chat.chatproviders'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -26,22 +26,17 @@ android {
     }
 }
 
-ext {
-    picassoVersion = "2.5.2"
-}
-
 dependencies {
     implementation group: 'com.zendesk', name: 'chat-providers', version: rootProject.ext.chatSdkVersion
-    implementation group: "com.zendesk.belvedere2", name: "belvedere", version: rootProject.belvedereVersion
+    implementation group: "com.zendesk.belvedere2", name: "belvedere", version: rootProject.belvedere2Version
 
     implementation group: 'com.google.android.material', name: 'material', version: rootProject.ext.appCompatVersion
     implementation group: 'androidx.recyclerview', name: 'recyclerview', version: rootProject.ext.appCompatVersion
 
-    implementation group: 'com.squareup.picasso', name: 'picasso', version: project.ext.picassoVersion
-
-    implementation ('com.google.firebase:firebase-messaging:20.2.4') {
-        exclude group: 'com.android.support', module: 'support-v4'
-    }
+    implementation group: 'com.squareup.picasso', name: 'picasso', version: rootProject.ext.picassoVersion
 
     implementation project(":demo_apps_commons")
+    implementation ('com.google.firebase:firebase-messaging:' + rootProject.ext.firebaseVersion) {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
 }

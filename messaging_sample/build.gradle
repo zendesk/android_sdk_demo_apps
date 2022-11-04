@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
 android {
+
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId rootProject.ext.applicationId + ".messaging"
+        applicationId  rootProject.ext.applicationId + ".messaging_sample"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -23,7 +24,6 @@ android {
 dependencies {
     api group: 'com.zendesk', name: 'answerbot', version: rootProject.ext.answerBotSdkVersion
     implementation group: 'com.zendesk', name: 'support', version: rootProject.ext.supportSdkVersion
-    implementation group: 'com.zendesk', name: 'messaging', version: rootProject.ext.messagingSdkVersion
     implementation group: 'com.zendesk', name: 'chat', version: rootProject.ext.chatSdkVersion
 
     implementation project(":demo_apps_commons")

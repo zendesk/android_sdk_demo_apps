@@ -4,7 +4,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId rootProject.ext.applicationId + ".answerbot"
+        applicationId rootProject.ext.applicationId + ".answerbot_sample"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -25,7 +25,6 @@ dependencies {
     implementation group: 'com.zendesk', name: 'answerbot', version: rootProject.ext.answerBotSdkVersion
     implementation group: 'com.zendesk', name: 'support', version: rootProject.ext.supportSdkVersion
     implementation group: 'com.zendesk', name: 'messaging', version: rootProject.ext.messagingSdkVersion
-    implementation group: 'com.zendesk', name: 'guide', version: rootProject.ext.guideSdkVersion
 
     implementation project(":demo_apps_commons")
 }

@@ -10,9 +10,9 @@ import zendesk.support.Support
 
 class Global : Application() {
 
-    private val SUBDOMAIN_URL = ""
-    private val APPLICATION_ID = ""
-    private val OAUTH_CLIENT_ID = ""
+    private val SUBDOMAIN_URL = "https://z3nadvocate84.zendesk.com"
+    private val APPLICATION_ID = "daf8af259b13b56f4a8d0594dafa9d8b7fcbe9f3934a9940"
+    private val OAUTH_CLIENT_ID = "mobile_sdk_client_96ccbde88735e328e182"
 
     companion object {
         private var missingCredentials = false

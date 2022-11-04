@@ -20,7 +20,8 @@ public class Global extends Application {
      * <p/>
      * Account key can be found in Zopim Dashboard at the <a href="https://dashboard.zopim.com/#widget/getting_started">Getting Started Page</a>
      */
-    private final static String ACCOUNT_KEY = ""; // NB: Replace this key with your Zopim account key
+
+    private final static String CHAT_ACCOUNT_KEY = ""; // NB: Replace this key with your Zopim account key
     private final static String PROJECT_ID = ""; // Firebase console -> Project settings -> General -> Project Id
     private final static String API_KEY = ""; // Firebase console -> Project settings -> Cloud messaging -> Server Key
     private final static String FCM_SENDER_ID = ""; // Firebase console -> Project settings -> Cloud messaging -> Sender ID
@@ -34,19 +35,20 @@ public class Global extends Application {
         // Enable logging
         Logger.setLoggable(true);
 
-        if (StringUtils.isEmpty(ACCOUNT_KEY)) {
+        if (StringUtils.isEmpty(CHAT_ACCOUNT_KEY)) {
             missingCredentials = true;
             return;
         }
 
         // Initialize Chat SDK
-        Chat.INSTANCE.init(this, ACCOUNT_KEY);
+        Chat.INSTANCE.init(this, CHAT_ACCOUNT_KEY);
 
         // Initialise Firebase app to receive push notifications
         initFirebase();
     }
 
     private void initFirebase() {
+
         if (PROJECT_ID.isEmpty() || API_KEY.isEmpty() || FCM_SENDER_ID.isEmpty()) {
             missingCredentials = true;
             return;
