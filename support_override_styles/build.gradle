@@ -28,7 +28,6 @@ dependencies {
     api group: 'com.zendesk', name: 'support', version: rootProject.ext.supportSdkVersion
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     implementation project(":demo_apps_commons")
 }

@@ -60,8 +60,7 @@ class Global : Application() {
         )
 
         // b). JWT (Must be initialized with your JWT identifier)
-        Zendesk.INSTANCE.setIdentity(JwtIdentity("{JWT User Identifier}"))
-
+        //Zendesk.INSTANCE.setIdentity(JwtIdentity("{JWT User Identifier}"))
         Support.INSTANCE.init(Zendesk.INSTANCE)
     }
 }

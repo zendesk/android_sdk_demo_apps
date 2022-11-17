@@ -4,13 +4,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.zendesk.talk.sample"
-        minSdkVersion 21
-        targetSdkVersion 30
+        applicationId rootProject.ext.applicationId + "talk.sample"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -38,8 +37,9 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "zendesk.talk:talk-android:1.1.0"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+    implementation group: 'com.getkeepsafe.relinker', name: 'relinker', version: '1.4.2'
+    implementation group:"zendesk.talk", name:"talk-android", version: rootProject.ext.talkSdkVersion
+    implementation group:"androidx.constraintlayout", name:"constraintlayout", version: rootProject.ext.constraintlayoutVersion
+    implementation group:"androidx.lifecycle", name:"lifecycle-runtime-ktx", version: rootProject.ext.lifecycleVersion
     implementation project(":demo_apps_commons")
 }

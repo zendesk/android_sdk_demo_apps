@@ -15,7 +15,6 @@
     <!-- Enable the following permissions if you wish to have the option to show attachment images in fullscreen -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -26,7 +25,8 @@
 
         <activity   
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -42,14 +42,12 @@
         <!-- OPTIONAL, if you want to receive push, push opened and registration completed intents -->
         <receiver
             android:name="com.zendesk.example.ua.IntentReceiver"
-            android:exported="false">
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.urbanairship.push.CHANNEL_UPDATED" />
                 <action android:name="com.urbanairship.push.OPENED" />
                 <action android:name="com.urbanairship.push.RECEIVED" />
                 <action android:name="com.urbanairship.push.DISMISSED" />
-
                 <category android:name="${applicationId}" />
             </intent-filter>
         </receiver>

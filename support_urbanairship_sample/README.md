@@ -3,8 +3,6 @@
 # Zendesk Mobile SDK Android Demo app
 This app demonstrates how to integrate the Urban Airship and the Zendesk mobile SDK.
 
-Pull requests are welcome.
-
 ### Initial set up:
   1. Clone the repository: `git clone https://github.com/zendesk/android_sdk_demo_app.git`
   2. Import project into your Android Studio: `File` -> `New` -> `Import Project...`

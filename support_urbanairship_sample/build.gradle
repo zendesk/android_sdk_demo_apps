@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion 29
 
     defaultConfig {
-        applicationId rootProject.ext.applicationId + ".urbanairship"
+        applicationId rootProject.ext.applicationId + ".example.ua"
         minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
     }

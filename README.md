@@ -17,5 +17,5 @@ Each of the modules in this project is a stand-alone Android app, capable of bei
 Pull requests are welcome.
  
 ## Bugs
-Please submit bug reports to [Zendesk](https://support.zendesk.com/requests/new).
+Please submit bug reports to [Zendesk](https://support.zendesk.com/hc/en-us/articles/4408843597850).
  

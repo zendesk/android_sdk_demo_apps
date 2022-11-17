@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.zendesk.chat_v2_message_counter_sample"
-        minSdkVersion 16
-        targetSdkVersion 29
+        applicationId rootProject.ext.applicationId + ".chat_v2_message_counter_sample"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 

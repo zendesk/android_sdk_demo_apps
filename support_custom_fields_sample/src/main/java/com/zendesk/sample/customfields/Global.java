@@ -57,8 +57,7 @@ public class Global extends Application {
         );
 
         // b). JWT (Must be initialized with your JWT identifier)
-        Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
-
+        //Zendesk.INSTANCE.setIdentity(new JwtIdentity("{JWT User Identifier}"));
         Support.INSTANCE.init(Zendesk.INSTANCE);
     }
 
