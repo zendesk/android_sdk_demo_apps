@@ -1,5 +1,6 @@
 package com.zendesk.example.ua;
 
+import android.content.Context;
 import android.os.Bundle;
 import androidx.fragment.app.FragmentActivity;
 import android.view.View;
@@ -122,7 +123,7 @@ public class MainActivity extends FragmentActivity {
                 > (http://docs.urbanairship.com/platform/android.html)
          */
 
-        final String channelId = UAirship.shared().getPushManager().getChannelId();
+        final String channelId = UAirship.shared().getChannel().getId();
         Logger.d(LOG_TAG, String.format(Locale.US, "Urban Airship - Channel Id %s", channelId));
         ((EditText) findViewById(R.id.main_edittext_push)).setText(channelId);
     }

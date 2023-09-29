@@ -1,9 +1,17 @@
 package com.zendesk.example.ua;
 
 import android.app.Application;
+import android.content.Context;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.WorkerThread;
+import androidx.core.app.NotificationCompat;
+
+import com.google.firebase.FirebaseApp;
+import com.urbanairship.AirshipConfigOptions;
 import com.urbanairship.UAirship;
-import com.urbanairship.push.notifications.DefaultNotificationFactory;
+import com.urbanairship.push.notifications.AirshipNotificationProvider;
+import com.urbanairship.push.notifications.NotificationArguments;
 import com.zendesk.logger.Logger;
 import com.zendesk.util.StringUtils;
 
@@ -49,6 +57,8 @@ public class Global extends Application {
     }
 
     private void initUrbanAirship() {
+        // Start Firebase Messaging
+        FirebaseApp.initializeApp(getApplicationContext());
 
         // Initialize Urban Airship
         UAirship.takeOff(this);
@@ -57,13 +67,38 @@ public class Global extends Application {
         UAirship.shared().getPushManager().setUserNotificationsEnabled(true);
 
         // 'ic_chat_bubble_outline_black_24dp' should be displayed as notification icon
-        final DefaultNotificationFactory defaultNotificationFactory = new DefaultNotificationFactory(getApplicationContext());
-        defaultNotificationFactory.setSmallIconId(R.drawable.ic_chat_bubble);
-        UAirship.shared().getPushManager().setNotificationFactory(defaultNotificationFactory);
+        UAirship.shared().getPushManager().setNotificationProvider(new CustomNotificationFactory(getApplicationContext(), UAirship.shared().getAirshipConfigOptions()));
+
+        UAirship.shared().getPushManager().setNotificationListener(new CustomNotificationListener(getApplicationContext()));
     }
 
     static boolean isMissingCredentials() {
         return missingCredentials;
     }
 
+}
+
+class CustomNotificationFactory extends AirshipNotificationProvider {
+
+    public CustomNotificationFactory(
+            @NonNull Context context,
+            @NonNull AirshipConfigOptions configOptions
+    ) {
+        super(context, configOptions);
+    }
+
+    @WorkerThread
+    @NonNull
+    @Override
+    protected NotificationCompat.Builder onExtendBuilder(
+            @NonNull Context context,
+            @NonNull NotificationCompat.Builder builder,
+            @NonNull NotificationArguments arguments
+    ) {
+        builder = super.onExtendBuilder(context, builder, arguments);
+
+        // Apply any defaults to the builder
+        builder.setSmallIcon(R.drawable.ic_chat_bubble);
+        return builder;
+    }
 }

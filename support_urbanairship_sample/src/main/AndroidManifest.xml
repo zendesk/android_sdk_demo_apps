@@ -42,7 +42,7 @@
         <!-- OPTIONAL, if you want to receive push, push opened and registration completed intents -->
         <receiver
             android:name="com.zendesk.example.ua.IntentReceiver"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.urbanairship.push.CHANNEL_UPDATED" />
                 <action android:name="com.urbanairship.push.OPENED" />

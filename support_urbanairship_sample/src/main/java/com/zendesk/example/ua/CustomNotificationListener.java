@@ -6,7 +6,9 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.urbanairship.AirshipReceiver;
+import com.urbanairship.push.NotificationActionButtonInfo;
+import com.urbanairship.push.NotificationInfo;
+import com.urbanairship.push.NotificationListener;
 import com.urbanairship.push.PushMessage;
 import com.zendesk.logger.Logger;
 import com.zendesk.util.StringUtils;
@@ -17,13 +19,16 @@ import zendesk.core.Zendesk;
 import zendesk.support.Support;
 import zendesk.support.request.RequestActivity;
 
-public class IntentReceiver extends AirshipReceiver {
+public class CustomNotificationListener implements NotificationListener {
 
-    private final static String LOG_TAG = IntentReceiver.class.getSimpleName();
+    private final static String LOG_TAG = CustomNotificationListener.class.getSimpleName();
 
+    private final Context context;
+    public CustomNotificationListener(Context context) {
+        this.context = context;
+    }
     @Override
-    protected void onNotificationPosted(@NonNull Context context, @NonNull NotificationInfo notificationInfo) {
-
+    public void onNotificationPosted(@NonNull NotificationInfo notificationInfo) {
         PushMessage message = notificationInfo.getMessage();
 
         final String tid = message.getPushBundle().getString("tid");
@@ -42,11 +47,10 @@ public class IntentReceiver extends AirshipReceiver {
             final NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             nm.cancel(notificationInfo.getNotificationId());
         }
-
     }
 
     @Override
-    protected boolean onNotificationOpened(@NonNull Context context, @NonNull NotificationInfo notificationInfo) {
+    public boolean onNotificationOpened(@NonNull NotificationInfo notificationInfo) {
         // Return false here to allow Urban Airship to auto launch the launcher activity
 
         // Extract ticket id
@@ -75,6 +79,22 @@ public class IntentReceiver extends AirshipReceiver {
         return true;
     }
 
+    @Override
+    public boolean onNotificationForegroundAction(@NonNull NotificationInfo notificationInfo, @NonNull NotificationActionButtonInfo actionButtonInfo) {
+        Logger.e(LOG_TAG, "onNotificationForegroundAction method invoked: " + notificationInfo);
+        return false;
+    }
+
+    @Override
+    public void onNotificationBackgroundAction(@NonNull NotificationInfo notificationInfo, @NonNull NotificationActionButtonInfo actionButtonInfo) {
+        Logger.e(LOG_TAG, "onNotificationBackgroundAction method invoked: " + notificationInfo);
+    }
+
+    @Override
+    public void onNotificationDismissed(@NonNull NotificationInfo notificationInfo) {
+        Logger.e(LOG_TAG, "onNotificationDismissed method invoked: " + notificationInfo);
+    }
+
     @Nullable
     private Intent getZendeskDeepLinkIntent(Context context, String ticketId) {
 
@@ -94,4 +114,5 @@ public class IntentReceiver extends AirshipReceiver {
 
         return RequestActivity.builder().withRequestId(ticketId).deepLinkIntent(context, mainActivity);
     }
+
 }
