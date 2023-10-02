@@ -31,3 +31,6 @@ dependencies {
 
     implementation project(":demo_apps_commons")
 }
+
+apply plugin: 'com.google.gms.google-services'
+

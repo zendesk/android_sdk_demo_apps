@@ -1,0 +1,124 @@
+{
+  "project_info": {
+    "project_number": "243650116169",
+    "project_id": "mobile-sdks-sample-apps",
+    "storage_bucket": "mobile-sdks-sample-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243650116169:android:5eac9c429672895f379d98",
+        "android_client_info": {
+          "package_name": "com.zendesk.example.ua"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0aFOS124VK3t3cJl3cV7gFb9E41N7KOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243650116169:android:c01bd1d22ec08ca7379d98",
+        "android_client_info": {
+          "package_name": "zendesk.demo.nativemessaging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0aFOS124VK3t3cJl3cV7gFb9E41N7KOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243650116169:android:df3da460a0b7af50379d98",
+        "android_client_info": {
+          "package_name": "zendesk.demo.nativemessaging.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0aFOS124VK3t3cJl3cV7gFb9E41N7KOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243650116169:android:33e4930a12c270a4379d98",
+        "android_client_info": {
+          "package_name": "zendesk.demo.nativemessaging.headless.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0aFOS124VK3t3cJl3cV7gFb9E41N7KOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243650116169:android:e0f1e8296dd98c0a379d98",
+        "android_client_info": {
+          "package_name": "zendesk.espresso"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0aFOS124VK3t3cJl3cV7gFb9E41N7KOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243650116169:android:33b0c286b3af7392379d98",
+        "android_client_info": {
+          "package_name": "zendesk.sample.sdksintegration"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0aFOS124VK3t3cJl3cV7gFb9E41N7KOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
