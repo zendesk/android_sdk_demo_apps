@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if (Global.isMissingCredentials()) {
-            setContentView(R.layout.missing_credentials);
+            setContentView(com.zendesk.demo_apps_commons.R.layout.missing_credentials);
             return;
         }
         MessagingActivity.builder()
