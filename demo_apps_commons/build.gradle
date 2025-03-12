@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
-
+    namespace "com.zendesk.demo_apps_commons"
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
@@ -18,9 +18,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
 }
 
 dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.24'
     api group: 'androidx.appcompat', name: 'appcompat', version: rootProject.ext.appCompatVersion
 }
