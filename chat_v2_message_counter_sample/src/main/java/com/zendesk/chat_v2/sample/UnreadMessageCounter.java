@@ -19,20 +19,6 @@ class UnreadMessageCounter {
 
     public UnreadMessageCounter(UnreadMessageCounterListener unreadMessageCounterListener) {
         this.unreadMessageCounterListener = unreadMessageCounterListener;
-
-        Chat.INSTANCE.providers().chatProvider().observeChatState(new ObservationScope(), new Observer<ChatState>() {
-            @Override
-            public void update(ChatState chatState) {
-                if (chatState != null && !chatState.getChatLogs().isEmpty()) {
-                    if (shouldCount && lastReadChatLogId !=  null) {
-                        updateCounter(chatState.getChatLogs(), lastReadChatLogId);
-                    }
-                    lastChatLogId = chatState.getChatLogs().get(
-                            chatState.getChatLogs().size() - 1
-                    ).getId();
-                }
-            }
-        });
     }
 
 

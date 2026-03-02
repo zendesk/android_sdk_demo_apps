@@ -23,13 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="Chat Now"/>
+        android:text="Get State" />
 
     <Button
         android:id="@+id/btnCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="Start Counter"/>
+        android:text="Connect Chat" />
 
 </LinearLayout>
